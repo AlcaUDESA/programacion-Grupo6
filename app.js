@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 
 //requerimiento de rutas: 
 const mainRouter = require('./routes/mainRouter')
+const userRouter = require('./routes/userRouter')
 
 
 app.use(logger('dev'));
@@ -20,6 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //declarar el uso de rutas: 
 app.use('/', mainRouter)
-
+app.use('/', userRouter)
 
 module.exports = app;
