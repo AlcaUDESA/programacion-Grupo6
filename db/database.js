@@ -79,6 +79,37 @@ const database = {
       precio: 480,
       descripcion: "Vinland Saga es una serie anime que gira en torno a Thorfinn, el hijo del mejor de los guerreros en un mundo ambientado a finales del primer milenio donde los vikingos era la tribu más poderosa y atroz y la que había luchado sin cesar hasta el final."
     },
+  ],
+  comentarios: [{
+    nombreDelUsuario: 'Franco Milazzo',
+    comentarioDelUsuario: 'Llegó todo perfecto. Me encantó el packaging... me llegó al corazón.',
+    imagenDelUsuario: '../public/images/users/default-image.png',
+  },
+  {
+    nombreDelUsuario: 'Maximo Cosetti',
+    comentarioDelUsuario: 'Muy conforme con el producto. ¡Lo recomendaría sin dudar!',
+    imagenDelUsuario: '../public/images/users/default-image.png',
+  },
+  {
+    nombreDelUsuario: 'Mario Santos',
+    comentarioDelUsuario: 'Ha sido de gran utilidad. Óptimo. ',
+    imagenDelUsuario: '../public/images/users/default-image.png',
+  },
+  {
+    nombreDelUsuario: 'Martin Vanegas',
+    comentarioDelUsuario: 'A mi  hijo le va a encantó. Seguro compremos otra vez. Destaco la calidad del producto.',
+    imagenDelUsuario: '../public/images/users/default-image.png',
+  },
+  {
+    nombreDelUsuario: 'Ernestina Gutierrez',
+    comentarioDelUsuario: 'La  verdad pésima calidad del producto. Totalmente insatisfecha y no lo recomendaría. La textura podría ser mejor. Lo que iba a ser un regalo de navidad para mi hijo, se convirtió en un desecho para la basura. Espero mi reembolso.',
+    imagenDelUsuario: '../public/images/users/default-image.png',
+  },
+  {
+    nombreDelUsuario: 'Lucas Jaques Dupont ',
+    comentarioDelUsuario: 'Bochornoso. Todavía sigo esperando el producto después de dos semanas. Me gustaría que me ayuden y solucionen este problema',
+    imagenDelUsuario: '../public/images/users/default-image.png',
+  }
   ]
 }
 
