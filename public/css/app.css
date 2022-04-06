@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: #b98a5a;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -29,7 +29,10 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: #d8b899;
+  background-image: url(../images/The\ Art\ Showcase.jpeg);
+  
+  
 }
 
 ul,
@@ -48,6 +51,7 @@ a {
 figure {
   margin: 0;
   padding: 0;
+  
 }
 
 img {
@@ -69,6 +73,14 @@ hr {
 .main-header {
   padding: 15px 0;
   background-color: var(--yellow);
+  background-image: url();
+  
+  
+}
+
+.icon {
+  width: 50%;
+  height: 50%;
 }
 
 .main-header_home-link,
@@ -108,6 +120,9 @@ hr {
   color: var(--gray);
   cursor: pointer;
 }
+
+
+
 
 
 /*====== Main Navbar ======*/
@@ -154,10 +169,13 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  background-image: url(../images/_\ \(4\).jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  border: outset;
+  border-width: 10px;
+  border-color: #643b12;
   height: 100px;
 }
 
@@ -175,7 +193,7 @@ hr {
 }
 
 .product-box {
-  background-color: #ffffff;
+  background-color: #643b12;
   border-radius: 5px;
   overflow: hidden;
   transition: 300ms;
@@ -259,7 +277,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #643b12;
   padding: 20px 0;
   margin-top: 80px;
 }
