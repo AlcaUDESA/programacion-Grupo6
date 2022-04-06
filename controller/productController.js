@@ -3,14 +3,12 @@ const database = require('../db/database')
 
 const productController = {
   show: (req,res)=>{
-    res.render('product')
-    for (let i = 0; i < database.length; i++) {
-      
-      
-    }
+    return res.render('product', {
+      comentarios: database.comentarios
+    })
   },
   add: (req, res)=>{
-    res.render('product-add')
+    return res.render('product-add')
   }
 }
 

@@ -1,6 +1,12 @@
 const database = require('../db/database')
 const userController = {
 
+    show: (req,res)=>{
+        res.render('profile', {
+            usuario: database.usuario
+        })
+    },
+
     login: (req, res) => {
         res.render('login')
     },

@@ -23,4 +23,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', mainRouter);
 app.use('/user', userRouter);
 app.use('/product', productRouter)
+
 module.exports = app;

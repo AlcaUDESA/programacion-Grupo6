@@ -83,32 +83,26 @@ const database = {
   comentarios: [{
     nombreDelUsuario: 'Franco Milazzo',
     comentarioDelUsuario: 'Llegó todo perfecto. Me encantó el packaging... me llegó al corazón.',
-    imagenDelUsuario: '../public/images/users/default-image.png',
   },
   {
     nombreDelUsuario: 'Maximo Cosetti',
     comentarioDelUsuario: 'Muy conforme con el producto. ¡Lo recomendaría sin dudar!',
-    imagenDelUsuario: '../public/images/users/default-image.png',
   },
   {
     nombreDelUsuario: 'Mario Santos',
     comentarioDelUsuario: 'Ha sido de gran utilidad. Óptimo. ',
-    imagenDelUsuario: '../public/images/users/default-image.png',
   },
   {
     nombreDelUsuario: 'Martin Vanegas',
     comentarioDelUsuario: 'A mi  hijo le va a encantó. Seguro compremos otra vez. Destaco la calidad del producto.',
-    imagenDelUsuario: '../public/images/users/default-image.png',
   },
   {
-    nombreDelUsuario: 'Ernestina Gutierrez',
+    nombreDelUsuario: 'Irene Bisbal',
     comentarioDelUsuario: 'La  verdad pésima calidad del producto. Totalmente insatisfecha y no lo recomendaría. La textura podría ser mejor. Lo que iba a ser un regalo de navidad para mi hijo, se convirtió en un desecho para la basura. Espero mi reembolso.',
-    imagenDelUsuario: '../public/images/users/default-image.png',
   },
   {
     nombreDelUsuario: 'Lucas Jaques Dupont ',
-    comentarioDelUsuario: 'Bochornoso. Todavía sigo esperando el producto después de dos semanas. Me gustaría que me ayuden y solucionen este problema',
-    imagenDelUsuario: '../public/images/users/default-image.png',
+    comentarioDelUsuario: 'Bochornoso. Todavía sigo esperando el producto después de dos semanas. Me gustaría que me ayuden y solucionen este problema.',
   }
   ]
 }
