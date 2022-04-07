@@ -2,11 +2,11 @@ const database = require('../db/database')
 
 const mainController = {
   index: (req,res) =>{
-    res.render('index')
+    return res.render('index')
   },
   
   searchResults: (req,res) =>{
-  res.render('search-results')
+    return res.render('search-results')
   }
 }
 
