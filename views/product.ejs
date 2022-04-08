@@ -18,7 +18,11 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="../images/products/default-image.png" alt="" class="product-detail-img">
+					<img src=<% for(let i = 0; i < 2; i++){ %>
+						<% if(idSelected == productos[i].id){ %>
+							<%= productos[i].foto %>
+					<%	} %>
+					<% } %> alt="" class="product-detail-img">
 					<p class="product-detail-description">
 						En 1969, Kenji y sus amigos del colegio escribieron el Libro de las Profecías, en el que narraban cómo una organización maligna destruía el mundo y un grupo de nueve héroes salvaba a la humanidad.</p>
 				</article>
