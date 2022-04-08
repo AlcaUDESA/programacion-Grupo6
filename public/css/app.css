@@ -11,7 +11,7 @@
   --light-gray: #ebebeb;
   --green: #39b54a;
   --base-font-family: 'Roboto', sans-serif;
-  --base2-font-family: 'Times New Roman'
+  --base2-font-family: 'Roboto'
 }
 
 
@@ -28,12 +28,11 @@ body {
 }
 
 body {
-  font-family: var(--base-font-family);
+  font-family:  'Raleway', sans-serif;;
   font-weight: 300;
   background-color: #d8b899;
   background-image: url(../images/The\ Art\ Showcase.jpeg);
-  
-  
+
 }
 
 ul,
@@ -74,8 +73,8 @@ hr {
 .main-header {
   padding: 15px 0;
   background-color: var(--brown);
-  background-image: url();
-  font-family: var(--base2-font-family);
+  color: #643b12;
+  font-family: 'Raleway', sans-serif;
   
   
 }
@@ -186,28 +185,45 @@ box-shadow: rgba(100, 59, 18, 0.4) 0px 5px, rgba(100, 59, 18, 0.3) 0px 10px, rgb
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+  
 }
 
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
   color: var(--gray);
+  
 }
 
 .product-box {
   background-color: #643b12;
+  
   border-radius: 5px;
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  font-family: var(--base2-font-family);
+  color: var(--brown);
+  box-shadow: rgba(100, 59, 18, 0.4) 0px 5px, rgba(100, 59, 18, 0.3) 0px 10px, rgba(100, 59, 18, 0.2) 0px 15px, rgba(100, 59, 18, 0.1) 0px 20px, rgba(100, 59, 18, 0.05) 0px 25px;
+  
+  
 }
 
 .product-box a {
   display: block;
+
+  
+  
+}
+.product-box_image img {
+  height: 400px;
 }
 
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
+  
+ 
+
 }
 
 .product-box_data {
@@ -286,19 +302,19 @@ box-shadow: rgba(100, 59, 18, 0.4) 0px 5px, rgba(100, 59, 18, 0.3) 0px 10px, rgb
 
 .footer-data {
   text-align: center;
+  
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: #643b12;
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: #643b12;;
   font-size: 2.4em;
   font-weight: 400;
-}
-
+  font-family: 'Raleway', sans-serif;}
 .footer-data p {
   color: var(--gray);
   font-size: 1.5em;
