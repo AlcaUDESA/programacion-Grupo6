@@ -61,21 +61,21 @@ const database = {
     {
       nombre: 'Hajime no ippo',
       id: 8,
-      foto: "/images/12.jpeg",
+      foto: "/images/19.jpeg",
       precio: 460,
       descripcion: "Ippo Makunouchi (幕之内 一歩 Makunouchi Ippo) es un chico muy reservado y muy tímido de 17 años que trabaja con su madre en un negocio familiar de botes para pesca llamado tienda de pesca makunouchi  Debido a ello él nunca tiene tiempo libre para dedicarse a los deportes o hacer amigos."
     },
     {
       nombre: 'Naruto',
       id: 9,
-      foto: "https://via.placeholder.com/35",
+      foto: "/images/20.jpeg",
       precio: 450,
       descripcion: "Es una serie Manga que cuenta la historia de un joven ninja hiperactivo llamado Naruto Uzumaki que hará todo lo posible por ascender al máximo grado ninja de su aldea con el propósito de ser reconocido como alguien importante dentro de su aldea."
     },
     {
       nombre: 'Vinland saga',
       id: 10,
-      foto: "https://via.placeholder.com/35",
+      foto: "/images/21.jpeg",
       precio: 480,
       descripcion: "Vinland Saga es una serie anime que gira en torno a Thorfinn, el hijo del mejor de los guerreros en un mundo ambientado a finales del primer milenio donde los vikingos era la tribu más poderosa y atroz y la que había luchado sin cesar hasta el final."
     },
