@@ -8,7 +8,11 @@ const productController = {
     })
   },
   add: (req, res)=>{
-    return res.render('product-add')
+    return res.render('product-add', {
+      usuario: database.usuario,
+      comentarios: database.comentarios,
+      productos: database.productos
+  })
   }
 }
 

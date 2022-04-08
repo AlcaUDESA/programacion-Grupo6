@@ -471,6 +471,27 @@ textarea.form-input {
   padding: 15px;
 }
 
+.formularios{
+  background-color: #643b12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0px;
+}
+.campos{
+ margin: 10px 0px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.campos label{
+  font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: block;
+  margin: 10px 0px;
+}
+
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;

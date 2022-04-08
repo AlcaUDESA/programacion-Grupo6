@@ -3,7 +3,9 @@ const userController = {
 
     show: (req,res)=>{
         return res.render('profile', {
-            usuario: database.usuario
+            usuario: database.usuario,
+            comentarios: database.comentarios,
+            productos: database.productos
         })
     },
 
