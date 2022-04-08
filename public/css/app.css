@@ -4,13 +4,14 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #b98a5a;
+  --brown: #b98a5a;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Roboto', sans-serif;
+  --base2-font-family: 'Times New Roman'
 }
 
 
@@ -72,8 +73,9 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: var(--brown);
   background-image: url();
+  font-family: var(--base2-font-family);
   
   
 }
@@ -277,7 +279,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #643b12;
+  background-color: var(--brown);
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -472,22 +474,24 @@ textarea.form-input {
 }
 
 .formularios{
-  background-color: #643b12;
+  background-color: var(--brown);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 10px 0px;
+  font-family: var(--base2-font-family);
 }
 .campos{
  margin: 10px 0px;
 display: flex;
 align-items: center;
 justify-content: center;
+font-family: var(--base2-font-family);
 }
 .campos label{
   font-size: 16px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: var(--base2-font-family);
   display: block;
   margin: 10px 0px;
 }
