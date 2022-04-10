@@ -191,8 +191,10 @@ box-shadow: rgba(100, 59, 18, 0.4) 0px 5px, rgba(100, 59, 18, 0.3) 0px 10px, rgb
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
-  
+  color: #643b12;
+  background-color: #b98a5a;
+  padding: 10px 0px;
+  text-align: center;
 }
 
 .product-box {
