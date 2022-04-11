@@ -16,8 +16,33 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			
-
+			<div class="formularios">
+				<form action="/" method="GET">
+					<div class="campos">
+						<label for="imgPerfil">Foto de perfil:</label>
+						<input type="file" name="imgProduct" id="imgPerfil">
+					</div>
+					<div class="campos">
+						<label for="emailUsuario">Correo electrónico:</label>
+						<input type="email" name="emailUsuario" id="emailUsuario">
+					</div>
+					<div class="campos">
+						<label for="nameUsuario">Nombre de usuario:</label>
+						<input type="text" name="nameUsuario" id="nameUsuario">
+					</div>
+					<div class="campos">
+						<label for="contraseniaUsuario">Contraseña:</label>
+						<input type="password" name="Password" id="contraseniaUsuario">
+					</div>
+					<div class="campos">
+						<label for="dateUpload">Fecha de nacimiento:</label>
+						<input type="date" name="dateUpload" id="dateUpload">
+					</div>
+					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
+				</form>
+			</div>
+		</div>
+	</div>
 
 		<!-- footer -->
 		<%- include('./partials/footer') %>

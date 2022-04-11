@@ -9,7 +9,7 @@
 
 	<!-- product detail -->
 	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
+		<div class="d-flex align-items-center titulo-producto">
 			<h2 class="products-title">20 century boys</h2> 
 			<p class="product-detail-description">
 				<a href="product-add.html">Editar</a>
@@ -21,19 +21,20 @@
 					<img src=<% for(let i = 0; i < productos.length; i++){ %>
 						<% if(idSelected == productos[i].id){ %>
 							<%= productos[i].foto %>
-					<%	} %>
-					<% } %> alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						En 1969, Kenji y sus amigos del colegio escribieron el Libro de las Profecías, en el que narraban cómo una organización maligna destruía el mundo y un grupo de nueve héroes salvaba a la humanidad.</p>
+					<%	} } %> alt="" class="product-detail-img">
+					<% for(let i = 0; i < productos.length; i++){ %>
+						<% if(idSelected == productos[i].id){ %>
+							<p class="product-detail-description"> <%=productos[i].descripcion %></p>
+							<% } } %>
 				</article>
 				<div class="col-12 col-lg-4">			
 					<section class="comments">
 						<% for (let i = 0; i < comentarios.length; i++)  {%>
 							<article>
-							<img src="<https://via.placeholder.com/35>" alt="">
+							<img src=<%= comentarios[i].fotoDelUsuario %> alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html"><%= comentarios[i].nombreDelUsuario %>: </a> </strong>
+								<strong> <a href="/user/profile"><%= comentarios[i].nombreDelUsuario %>: </a> </strong>
 								<%= comentarios[i].comentarioDelUsuario%></p>
 							</div>
 						</article>
