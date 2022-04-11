@@ -4,7 +4,6 @@ const userController = {
     show: (req,res)=>{
         return res.render('profile', {
             usuario: database.usuario,
-            comentarios: database.comentarios,
             productos: database.productos
         })
     },
@@ -16,7 +15,9 @@ const userController = {
         return res.render('register')
     },
     edit: (req,res) =>{
-        return res.render('profile-edit')
+        return res.render('profile-edit',{
+            usuario: database.usuario
+        })
     }
 }
 

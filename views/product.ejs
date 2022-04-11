@@ -23,10 +23,18 @@
 							<%= productos[i].foto %>
 					<%	} %>
 					<% } %> alt="" class="product-detail-img">
+
 					<p class="product-detail-description">
-						En 1969, Kenji y sus amigos del colegio escribieron el Libro de las Profecías, en el que narraban cómo una organización maligna destruía el mundo y un grupo de nueve héroes salvaba a la humanidad.</p>
+						<% for(let i = 0; i < comentarios.length; i++){ %>
+							<% if(idSelected == comentarios[i].comentarioDelUsuario){ %>
+								<%= productos[i].foto %>
+						<%	} %>
+						<% } %>
+					</p>
+	
 				</article>
 				<div class="col-12 col-lg-4">			
+				
 					<section class="comments">
 						<% for (let i = 0; i < comentarios.length; i++)  {%>
 							<article>

@@ -13,18 +13,18 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
+				<h2 class="register-title">Registrate</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<div class="formularios">
-				<form action="/" method="GET">
+			<div class="formulariosRegister">
+				<form class="registerForm" action="/user/edit" method="GET">
 					<div class="campos">
 						<label for="imgPerfil">Foto de perfil:</label>
-						<input type="file" name="imgProduct" id="imgPerfil">
+						<input type="file" name="imagenUsuario" id="imgPerfil">
 					</div>
 					<div class="campos">
 						<label for="emailUsuario">Correo electrónico:</label>
-						<input type="file" name="emailUsuario" id="emailUsuario">
+						<input type="email" name="emailUsuario" id="emailUsuario">
 					</div>
 					<div class="campos">
 						<label for="nameUsuario">Nombre de usuario:</label>
@@ -37,6 +37,9 @@
 					<div class="campos">
 						<label for="dateUpload">Fecha de nacimiento:</label>
 						<input type="date" name="dateUpload" id="dateUpload">
+					</div>
+					<div class="campos">
+						<button type="submit">Enviar</button>
 					</div>
 				</form>
 			</div>
