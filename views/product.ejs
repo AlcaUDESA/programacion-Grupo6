@@ -18,14 +18,8 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src=<% for(let i = 0; i < productos.length; i++){ %>
-						<% if(idSelected == productos[i].id){ %>
-							<%= productos[i].foto %>
-					<%	} } %> alt="" class="product-detail-img">
-					<% for(let i = 0; i < productos.length; i++){ %>
-						<% if(idSelected == productos[i].id){ %>
-							<p class="product-detail-description"> <%=productos[i].descripcion %></p>
-							<% } } %>
+				<!-- ACA VA LA DESCRIPCION DEL PRODUCTO POR CUALQUIER COSA DEJO LO QUE HICE YO EN EL README-->
+				<p class="product-detail-description">En 1969, Kenji y sus amigos del colegio escribieron el Libro de las Profecías, en el que narraban cómo una organización maligna destruía el mundo y un grupo de nueve héroes salvaba a la humanidad.</p>
 				</article>
 				<div class="col-12 col-lg-4">			
 					<section class="comments">
