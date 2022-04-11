@@ -7,7 +7,8 @@ const productController = {
       usuario: database.usuario,
       comentarios: database.comentarios,
       productos: database.productos,
-      idSelected: req.params.id
+      idSelected: req.params.id,
+      descripcionSelected : req.params.descripcion,
   })
   },
   add: (req, res)=>{
@@ -19,4 +20,4 @@ const productController = {
   }
 }
 
-module.exports = productController
+module.exports = productController;
