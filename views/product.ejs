@@ -18,27 +18,22 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src=<% for(let i = 0; i < productos.length; i++){ %>
+					<img src=<% for(let i = 0; i < 2; i++){ %>
 						<% if(idSelected == productos[i].id){ %>
 							<%= productos[i].foto %>
 					<%	} %>
 					<% } %> alt="" class="product-detail-img">
 
 					<p class="product-detail-description">
-						<% for(let i = 0; i < comentarios.length; i++){ %>
-							<% if(idSelected == comentarios[i].comentarioDelUsuario){ %>
-								<%= productos[i].foto %>
-						<%	} %>
-						<% } %>
+					<!-- me falta hacer la lógica de descripcion -- agus alca-->
 					</p>
-	
 				</article>
-				<div class="col-12 col-lg-4">			
 				
+				<div class="col-12 col-lg-4">			
 					<section class="comments">
 						<% for (let i = 0; i < comentarios.length; i++)  {%>
 							<article>
-							<img src="<https://via.placeholder.com/35>" alt="">
+							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
 								<strong> <a href="profile.html"><%= comentarios[i].nombreDelUsuario %>: </a> </strong>

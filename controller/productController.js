@@ -8,7 +8,7 @@ const productController = {
       comentarios: database.comentarios,
       productos: database.productos,
       idSelected: req.params.id,
-      description : req.params.descripcion,
+      descripcion : req.params.descripcion,
   })
   },
   add: (req, res)=>{
