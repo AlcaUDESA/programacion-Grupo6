@@ -13,13 +13,21 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
+				<h2 class="products-title">Resultados de: Vagabond  </h2>
+				<section class="product-box product-search-result">
+					<a href="/product/<%= productos[5].id %>">
+						<figure class="product-box_image">
+							<img src=<%= productos[5].foto %> alt=<%= productos[5].nombre %>>
+						</figure>
+						<article class="product-box_data">
+							<h2><%= productos[5].nombre %></h2>
+							<p><%= productos[5].descripcion %> </p>
+							<p>Comentarios: <%= comentarios.length %></p>
+						</article>
+					</a>
+				</section>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
-			Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
-			////////////////
-			</h2>
 
 
 	<!-- footer -->

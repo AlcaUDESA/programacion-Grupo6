@@ -5,12 +5,11 @@ const database = {
     contraseña: 'intenteDeNuevo',
     nacimiento:'25-09-2002',
     documento: 44656032,
-    fotoDePerfil: 'fotoDePerfil123.jpg'
   },
   
   productos: [
     {
-      nombre: 'Chinsaw man',
+      nombre: 'Chainsaw man',
       id: 1,
       foto: '/images/12.jpeg',
       precio: 499,
@@ -83,26 +82,32 @@ const database = {
   comentarios: [{
     nombreDelUsuario: 'Franco Milazzo',
     comentarioDelUsuario: 'Llegó todo perfecto. Me encantó el packaging... me llegó al corazón.',
+    fotoDelUsuario: '/images/profileImg.jpg'
   },
   {
     nombreDelUsuario: 'Maximo Cosetti',
     comentarioDelUsuario: 'Muy conforme con el producto. ¡Lo recomendaría sin dudar!',
+    fotoDelUsuario: '/images/profileImg.jpg'
   },
   {
     nombreDelUsuario: 'Mario Santos',
     comentarioDelUsuario: 'Ha sido de gran utilidad. Óptimo. ',
+    fotoDelUsuario: '/images/profileImg.jpg'
   },
   {
     nombreDelUsuario: 'Martin Vanegas',
     comentarioDelUsuario: 'A mi  hijo le va a encantó. Seguro compremos otra vez. Destaco la calidad del producto.',
+    fotoDelUsuario: '/images/profileImg.jpg'
   },
   {
     nombreDelUsuario: 'Irene Bisbal',
     comentarioDelUsuario: 'La  verdad pésima calidad del producto. Totalmente insatisfecha y no lo recomendaría. La textura podría ser mejor. Lo que iba a ser un regalo de navidad para mi hijo, se convirtió en un desecho para la basura. Espero mi reembolso.',
+    fotoDelUsuario: '/images/profileImg.jpg'
   },
   {
     nombreDelUsuario: 'Lucas Jaques Dupont ',
     comentarioDelUsuario: 'Bochornoso. Todavía sigo esperando el producto después de dos semanas. Me gustaría que me ayuden y solucionen este problema.',
+    fotoDelUsuario: '/images/profileImg.jpg'
   }
   ]
 }
