@@ -576,6 +576,9 @@ width: 100%;
 }
 .registerForm{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .register-title {
   font-size: 2.8em;

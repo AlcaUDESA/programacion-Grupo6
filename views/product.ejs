@@ -10,7 +10,11 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center titulo-producto">
-			<h2 id="products-title">20 century boys</h2> 
+			<h2 id="products-title"><% for(let i = 0; i < productos.length; i++){ %>
+				<% if(idSelected == productos[i].id){ %>
+					<%= productos[i].nombre %>
+			<%	} %>
+			<% } %>	</h2> 
 			<p class="product-detail-description">
 				<a href="product-add.html">Editar</a>
 			</p>
