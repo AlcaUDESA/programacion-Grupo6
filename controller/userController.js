@@ -1,13 +1,11 @@
 const database = require('../db/database')
 const userController = {
-
     show: (req,res)=>{
         return res.render('profile', {
             usuario: database.usuario,
             productos: database.productos
         })
     },
-
     login: (req, res) => {
         return res.render('login')
     },
@@ -20,6 +18,5 @@ const userController = {
         })
     }
 }
-
 
 module.exports = userController

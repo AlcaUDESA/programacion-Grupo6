@@ -1,5 +1,4 @@
 const database = require('../db/database')
-
 const mainController = {
   index: (req,res) =>{
     return res.render('index', { 
@@ -18,4 +17,4 @@ const mainController = {
   }
 }
 
-module.exports = mainController
+module.exports = mainController;
