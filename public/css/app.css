@@ -597,6 +597,9 @@ width: 100%;
 }
 .registerForm{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .formis-title {
   font-size: 4em;
