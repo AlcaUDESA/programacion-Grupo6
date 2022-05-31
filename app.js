@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //declarar el uso de rutas: 
 app.use('/', mainRouter);
 app.use('/user', userRouter);
-app.use('/product', productRouter)
+app.use('/product', productRouter);
 
 module.exports = app;
