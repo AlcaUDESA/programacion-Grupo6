@@ -3,10 +3,27 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
+let session = require('express-session')
 
 // view engine setup:
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(session({
+    secret : 'myApp',
+    resave : false,
+    saveUninitialized : true
+  }));
+  
+  /* Middleware de session */
+  app.use(function(req, res, next) {
+    if ( req.session.user != undefined) {
+      res.locals.user = req.session.user;
+      return next()
+    }
+    return next();
+  });
+
 
 //requerimiento de rutas: 
 const mainRouter = require('./routes/main')
