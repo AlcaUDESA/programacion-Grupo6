@@ -44,6 +44,11 @@
 					</div>
 					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
 					</form>
+
+					<% if(locals.erroresLogin){ %>
+						<p class="mensajeError" style="color: whitesmoke;"> <%= erroresLogin.message %>
+						</p>
+					<% } %>
 				</div>
 			</h2>
 		</div>

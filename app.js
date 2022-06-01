@@ -9,6 +9,7 @@ let session = require('express-session')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(session({
     secret : 'myApp',
     resave : false,
