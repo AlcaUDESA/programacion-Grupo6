@@ -40,8 +40,8 @@ const userController = {
             } else {
                 return res.send("No esta registrado" +  info.email);
             }
-        }).catch((err) => {
-
+        }).catch((error) => {
+            return "error de la pagina"
         });
     },
     register: (req,res) =>{
