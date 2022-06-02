@@ -32,7 +32,7 @@ const userController = {
                         res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
                     }
 
-                    return res.redirect("/movies/all")
+                    return res.redirect("/")
                 } else {
                     return res.send("el usuario con el mail " +  result.email + " existe pero la clave es incorrecta");
                 }
