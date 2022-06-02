@@ -24,7 +24,9 @@ id int unsigned primary key not null auto_increment,
 nombre varchar(100) not null, 
 image varchar(100) not null,
 description text, 
-postdate date
+postdate date,
+usuario_id int unsigned not null,
+foreign key (usuario_id) references usuario(id)
 );
 
 create table me_gusta(
