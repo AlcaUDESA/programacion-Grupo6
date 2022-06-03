@@ -2,6 +2,9 @@ const database = require('../db/database')
 
 const bcrypt = require('bcryptjs');
 
+const db = require("../database/models")
+const User = db.User
+
 const userController = {
     show: (req,res)=>{
         return res.render('profile', {
@@ -19,18 +22,18 @@ const userController = {
         let info = req.body;
         let filtro = {where : [ { email : info.email}]};
 
-        user.findOne(filtro)
+        User.findOne(filtro)
         .then((result) => {
-
+        console.log(result)
             if (result != null) {
 
-                let contraEncriptada = bcrypt.compareSync(info.password , result.password)
+                let contraEncriptada = bcrypt.compareSync(info.contraseña , result.contraseña)
                 if (contraEncriptada) {
 
-                    req.session.user = result.dataValues;
+                    req.session.user = result;
 
                     if (req.body.remember != undefined) {
-                        res.cookie('userId', result.dataValues.id, {maxAge : 1000 * 60 *5 } )
+                        res.cookie('userId', result.id, {maxAge : 1000 * 60 *5 } )
                     }
 
                     return res.redirect("/")
