@@ -18,17 +18,16 @@ module.exports = (sequelize, DataTypes) =>{
       type: DataTypes.TEXT,
       allowNull: false
     },
-    postDate: {
-     type: DataTypes.DATE,
-     allowNull: false
-    },
     usuario_id: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
   };
+  
   let config = {
-    timestamps: false,
+    timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   };
 
   const Product = sequelize.define(alias,cols,config);

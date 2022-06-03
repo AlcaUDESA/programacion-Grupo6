@@ -1,6 +1,6 @@
 const database = require('../db/database');
 const db = require('../database/models');
-const Products = db.Products;
+
 const productController = {
   show: (req,res)=>{
     return res.render('product',  {
@@ -18,10 +18,9 @@ const productController = {
   })
   },
   productAdd: (req, res) => {
-    console.log('req.body');
-    Products.create({
+    console.log(req.body);
+    db.Product.create({
       nombre: req.body.nameProduct,
-      image: req.body.imgProduct,
       description: req.body.description,
       postDate: req.body.dateUpload
     })
