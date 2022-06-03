@@ -15,6 +15,7 @@ const userController = {
     },
 
     procesarLogin : (req, res) => {
+        let errors = {}
         let info = req.body;
         let filtro = {where : [ { email : info.email}]};
 
@@ -23,8 +24,8 @@ const userController = {
 
             if (result != null) {
 
-                let passEncriptada = bcrypt.compareSync(info.password , result.password)
-                if (passEncriptada) {
+                let contraEncriptada = bcrypt.compareSync(info.password , result.password)
+                if (contraEncriptada) {
 
                     req.session.user = result.dataValues;
 
