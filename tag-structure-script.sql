@@ -8,8 +8,6 @@ dni int not null,
 contraseña varchar(255) not null,
 email varchar(255) unique not null,
 birthdate DATE,
-created_at DATETIME,
-updated_at DATETIME,
 picture varchar(255) not null
 );
 

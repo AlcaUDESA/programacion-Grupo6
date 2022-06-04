@@ -22,7 +22,8 @@ const productController = {
     db.Product.create({
       nombre: req.body.nameProduct,
       description: req.body.description,
-      postDate: req.body.dateUpload
+      postDate: req.body.dateUpload,
+      
     })
     .then((results) =>{ res.redirect('/')
     })
