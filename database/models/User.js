@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) =>{
         type: dataTypes.INTEGER,
         allowNull: false
       },
-      contraseña: {
+      contra: {
         type: dataTypes.STRING,
 
         allowNull: false

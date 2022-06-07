@@ -10,37 +10,37 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.use(session({
-    secret : 'myApp',
-    resave : false,
-    saveUninitialized : true
-  }));
+// app.use(session({
+//     secret : 'myApp',
+//     resave : false,
+//     saveUninitialized : true
+//   }));
   
  
-  app.use(function(req, res, next) {
-    if ( req.session.user != undefined) {
-      res.locals.user = req.session.user;
-      return next()
-    }
-    return next();
-  });
-  app.use(function(req, res, next) {
-    if (req.cookies.id != undefined && req.session.user == undefined) {
+//   app.use(function(req, res, next) {
+//     if ( req.session.user != undefined) {
+//       res.locals.user = req.session.user;
+//       return next()
+//     }
+//     return next();
+//   });
+//   app.use(function(req, res, next) {
+//     if (req.cookies.id != undefined && req.session.user == undefined) {
 
-      let idUsuarioEnCookie = req.cookies.id;
+//       let idUsuarioEnCookie = req.cookies.id;
 
-      db.User.findByPk(idUsuarioEnCookie)
-      .then((user) => {
-        req.session.user = user.dataValues;
-        res.locals.user  = user.dataValues;
-        return next();
-      }).catch((error) => {
-        console.log(error);
-      });
-    } else {
-      return next();
-    }
-})
+//       db.User.findByPk(idUsuarioEnCookie)
+//       .then((user) => {
+//         req.session.user = user.dataValues;
+//         res.locals.user  = user.dataValues;
+//         return next();
+//       }).catch((error) => {
+//         console.log(error);
+//       });
+//     } else {
+//       return next();
+//     }
+// })
 
 //requerimiento de rutas: 
 const mainRouter = require('./routes/main')

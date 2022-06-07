@@ -18,36 +18,14 @@ const userController = {
     },
 
     procesarLogin : (req, res) => {
-        let errors = {}
-        let info = req.body;
-        let filtro = {where : [ { email : info.email}]};
 
-        User.findOne(filtro)
-        .then((result) => {
-        console.log(result)
-            if (result != null) {
-
-                let contraEncriptada = bcrypt.compareSync(info.contraseña , result.contraseña)
-                if (contraEncriptada) {
-
-                    req.session.user = result.dataValues;
-
-                    if (req.body.remember != undefined) {
-                        res.cookie('id', result.id.dataValues, {maxAge : 1000 * 60 *5 } )
-                    }
-
-                    return res.redirect("/")
-                } else {
-                    return res.send("el usuario con el mail " +  result.email + " existe pero la clave es incorrecta");
-                }
-
-            } else {
-                return res.send("No esta registrado" +  info.email);
-            }
-        }).catch((error) => {
-            return "error de la pagina"
-        });
+        User.findOne({where: [ {email: req.body.email}]})
+        .then((result) =>{
+            console.log (result)
+        })
     },
+
+    
     register: (req,res) =>{
         return res.render('register')
     },

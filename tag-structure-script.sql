@@ -5,7 +5,7 @@ use grupo6prog2;
 create table usuario(
 id int unsigned  primary key not null  auto_increment,
 dni int not null,
-contraseña varchar(255) not null,
+contra varchar(255) not null,
 email varchar(255) unique not null,
 birthdate DATE,
 picture varchar(255) not null
