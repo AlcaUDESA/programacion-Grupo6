@@ -24,7 +24,23 @@ app.use(session({
     }
     return next();
   });
+  app.use(function(req, res, next) {
+    if (req.cookies.id != undefined && req.session.user == undefined) {
 
+      let idUsuarioEnCookie = req.cookies.id;
+
+      db.User.findByPk(idUsuarioEnCookie)
+      .then((user) => {
+        req.session.user = user.dataValues;
+        res.locals.user  = user.dataValues;
+        return next();
+      }).catch((error) => {
+        console.log(error);
+      });
+    } else {
+      return next();
+    }
+})
 
 //requerimiento de rutas: 
 const mainRouter = require('./routes/main')

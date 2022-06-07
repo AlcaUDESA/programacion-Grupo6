@@ -30,10 +30,10 @@ const userController = {
                 let contraEncriptada = bcrypt.compareSync(info.contraseña , result.contraseña)
                 if (contraEncriptada) {
 
-                    req.session.user = result;
+                    req.session.user = result.dataValues;
 
                     if (req.body.remember != undefined) {
-                        res.cookie('userId', result.id, {maxAge : 1000 * 60 *5 } )
+                        res.cookie('id', result.id.dataValues, {maxAge : 1000 * 60 *5 } )
                     }
 
                     return res.redirect("/")
@@ -59,7 +59,7 @@ const userController = {
 
     logout : (req, res) => {
         req.session.destroy();
-        res.clearCookie('userId');
+        res.clearCookie('id');
         return res.render("login")
     },
 }
