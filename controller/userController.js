@@ -21,11 +21,28 @@ const userController = {
 
         User.findOne({where: [ {email: req.body.email}]})
         .then((result) =>{
-            console.log (result)
+            if (result != null) {
+
+                let contraEncrip = bcrypt.compareSync( req.body.contra , result.contra)
+                if (contraEncrip) {
+
+                    req.session.User = result.dataValues;
+
+                    if (req.body.remember != undefined) {
+                        res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
+                    }
+
+                    return res.redirect("/")
+                } else {
+                    return res.send("La contraseña de" +  result.email + " es incorrecta");
+                }
+
+            } else {
+                return res.send("No existe este mail: " +  req.body.email);
+            }
         })
     },
 
-    
     register: (req,res) =>{
         return res.render('register')
     },
