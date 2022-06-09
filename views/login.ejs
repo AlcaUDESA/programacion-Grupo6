@@ -44,11 +44,11 @@
 					</div>
 					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
 					</form>
-
-					<% if(locals.erroresLogin){ %>
-						<p class="mensajeError" style="color: whitesmoke;"> <%= erroresLogin.message %>
-						</p>
-					<% } %>
+					<div>
+					<% if (locals.errors) { %>
+						<p style="color: rgb(69, 25, 25);"><%= locals.errors.message %> </p>
+					<% } %> 
+					</div>
 				</div>
 			</h2>
 		</div>

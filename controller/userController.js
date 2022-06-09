@@ -19,28 +19,47 @@ const userController = {
 
     procesarLogin : (req, res) => {
 
-        User.findOne({where: [ {email: req.body.email}]})
-        .then((result) =>{
-            if (result != null) {
+        let errors = {};
 
-                let contraEncrip = bcrypt.compareSync( req.body.contra , result.contra)
-                if (contraEncrip) {
+        if (req.body.email == "") {
+            errors.message = "El email esta vacio";
+            res.locals.errors = errors;
+            return res.render('login');
 
-                    req.session.User = result.dataValues;
+        }else if(req.body.contra == ""){
+            errors.message = "La contraseña esta vacia";
+            res.locals.errors = errors;
+            return res.render('login'); 
+        } else {
+                    User.findOne({where: [ {email: req.body.email}]})
 
-                    if (req.body.remember != undefined) {
-                        res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
-                    }
+                     .then((result) =>{
+                        if (result != null) {
 
-                    return res.redirect("/")
-                } else {
-                    return res.send("La contraseña de" +  result.email + " es incorrecta");
+                         let contraEncrip = bcrypt.compareSync( req.body.contra , result.contra)
+                            if (contraEncrip) {
+
+                            req.session.User = result.dataValues;
+
+                             if (req.body.remember != undefined) {
+                             res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
+                                }
+                                
+                             return res.redirect("/")
+                             } 
+                        else 
+                        {
+                        errors.message = "Contraseña incorrecta";
+                        res.locals.errors = errors;
+                        return res.render('login');
                 }
 
             } else {
-                return res.send("No existe este mail: " +  req.body.email);
+                errors.message = "Email no registrado";
+                res.locals.errors = errors;
+                return res.render('login');
             }
-        })
+        })}
     },
 
     register: (req,res) =>{
@@ -51,6 +70,7 @@ const userController = {
             usuario: database.usuario
         })
     },
+
 
     logout : (req, res) => {
         req.session.destroy();

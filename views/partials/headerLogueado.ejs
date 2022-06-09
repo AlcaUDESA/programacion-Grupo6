@@ -51,29 +51,34 @@
 				</ul>
 	
 				<ul class="right-navbar">
+					<li>
+						<% if (locals.User != undefined) { %>
+							<a href="/profile" class="">
+							  <img src="/images/usuarios/<%= User.picture %> " alt="Imagen de <%= User.email %>" id="logo" style="width: 50px;" />
+							</a>
+					   <% }else { %>
+							<a href="/user/profile" class="itemContenedora">
+							  <img src="/images/logo.png" style="width: 50px;" alt="usuario vacio" id="logo" />
+							</a>
+						<% } %> 
+					</li>
 					<li><a href="/user/profile">
 						<%=usuario.usuario%> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
-						<form action="" method="post">
+						<form action="/user/login" method="post">
 							<button class="logout" type="submit">
 								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
 							</button>
 						</form>
 					</li>
-					<!-- Solo deslogueado <li>
-						<a href="register.ejs">Creá tu cuenta <i class="far fa-address-card"></i>
-						</a>
-					</li>
-					<li>
-						<a href="login.ejs">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-					</li> -->
+					
 				</ul>
 			</nav>
 		</div>
 	</header>
-	<!-- /Header -->
+
 	
 </body>	
 </html>
