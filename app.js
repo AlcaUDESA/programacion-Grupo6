@@ -5,6 +5,8 @@ const logger = require('morgan');
 const app = express();
 let session = require('express-session')
 
+
+
 // view engine setup:
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -24,6 +26,32 @@ app.set('view engine', 'ejs');
   }
        return next();
    });
+
+   const db = require("./database/models")
+   const User = db.User;
+
+
+app.use(function(req, res, next) {
+    if (req.cookies != undefined && req.session.user == undefined) {
+        let idUser = req.cookies.id;
+  
+        User.findByPk(idUser)
+        .then((user) => {
+          req.session.User = user.dataValues;
+          res.locals.User = user.dataValues;
+          return next();
+        }).catch((err) => {
+          console.log(err);
+        });
+  
+    } else {
+      return next();
+    }
+  
+  });
+   
+
+  
 
 
 //requerimiento de rutas: 
