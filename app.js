@@ -5,7 +5,14 @@ const logger = require('morgan');
 const app = express();
 let session = require('express-session')
 
+const db = require("./database/models")
+const User = db.User
 
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup:
 app.set('views', path.join(__dirname, 'views'));
@@ -27,12 +34,8 @@ app.set('view engine', 'ejs');
        return next();
    });
 
-   const db = require("./database/models")
-   const User = db.User;
-
-
-app.use(function(req, res, next) {
-    if (req.cookies != undefined && req.session.user == undefined) {
+   app.use(function(req, res, next) {
+    if (req.cookies.id != undefined && req.session.user == undefined) {
         let idUser = req.cookies.id;
   
         User.findByPk(idUser)
@@ -49,21 +52,13 @@ app.use(function(req, res, next) {
     }
   
   });
-   
-
-  
-
 
 //requerimiento de rutas: 
 const mainRouter = require('./routes/main')
 const userRouter = require('./routes/user')
 const productRouter = require('./routes/product')
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 //declarar el uso de rutas: 
 app.use('/', mainRouter);

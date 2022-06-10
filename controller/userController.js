@@ -2,15 +2,25 @@ const database = require('../db/database')
 
 const bcrypt = require('bcryptjs');
 
-const db = require("../database/models")
-const User = db.User
+const db = require("../database/models");
+const res = require('express/lib/response');
+const User = db.User;
+
+const Productos = db.Product;
+
+
 
 const userController = {
+
+
     show: (req,res)=>{
+        
         return res.render('profile', {
             usuario: database.usuario,
             productos: database.productos
         })
+        
+
     },
     login: (req, res) => {
         return res.render('login')
@@ -41,10 +51,10 @@ const userController = {
 
                             req.session.User = result.dataValues;
 
-                             if (req.body.remember != undefined) {
-                             res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
-                                }
-                                
+                            if (req.body.remember != undefined) {
+                                res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
+                            }
+
                              return res.redirect("/")
                              } 
                         else 
@@ -70,7 +80,18 @@ const userController = {
             usuario: database.usuario
         })
     },
+    procesarEdit: (req,res) => {
 
+        User.edit({
+            email: req.body.emailUsuario,
+            contra: req.body.Password,
+            birthday: req.body.dateUpload,
+            
+          })
+          .then((results) =>{ res.redirect('/')
+          })
+          .catch((errors) =>{ console.log(errors)})
+    },
 
     logout : (req, res) => {
         req.session.destroy();
