@@ -4,6 +4,7 @@ use grupo6prog2;
 
 create table usuario(
 id int unsigned  primary key not null  auto_increment,
+nombre varchar(255) not null,
 dni int not null,
 contra varchar(255) not null,
 email varchar(255) unique not null,
@@ -28,7 +29,7 @@ image varchar(100) not null,
 description text, 
 created_at DATETIME,
 updated_at DATETIME,
-upload_at DATETIME
+upload_at DATETIME,
 usuario_id int unsigned not null,
 foreign key (usuario_id) references usuario(id)
 );
