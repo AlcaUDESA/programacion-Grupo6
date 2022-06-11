@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const db = require("../database/models");
 const res = require('express/lib/response');
+const { locals } = require('../app');
 const User = db.User;
 
 const Productos = db.Product;
@@ -27,6 +28,7 @@ const userController = {
     
     },
 
+
     procesarLogin : (req, res) => {
 
         let errors = {};
@@ -35,6 +37,7 @@ const userController = {
             errors.message = "El email esta vacio";
             res.locals.errors = errors;
             return res.render('login');
+           ; 
 
         }else if(req.body.contra == ""){
             errors.message = "La contraseña esta vacia";
@@ -82,15 +85,24 @@ const userController = {
     },
     procesarEdit: (req,res) => {
 
-        User.edit({
+        User.update({
             email: req.body.emailUsuario,
             contra: req.body.Password,
-            birthday: req.body.dateUpload,
+        
             
+            
+          },{
+            where: {
+                id: req.cookies.id
+            }
+
           })
-          .then((results) =>{ res.redirect('/')
-          })
-          .catch((errors) =>{ console.log(errors)})
+          .then((result) => {
+            return res.redirect("/user/profile");
+          }).catch((err) => {
+            return res.send(err)
+          });
+         
     },
 
     logout : (req, res) => {
