@@ -4,7 +4,6 @@ const db = require("../database/models");
 const res = require('express/lib/response');
 const { locals } = require('../app');
 const User = db.User;
-
 const Productos = db.Product;
 
 
@@ -99,11 +98,19 @@ const userController = {
             return res.render('register')
 
         } else if(info.password.length < 3){
-            errors.message = "La contraseña debe tener al menos tres caracteres"
-            res.locals.erros = errors;
+            errors.message = "La contraseña debe tener al menos tres caracteres";
+            res.locals.errors = errors;
             return res.render('register')
+        } else if(info.emailUsuario == ""){
+            errors.message = "Debes escribir un email para registrarte";
+            res.locals.errors = errors; 
+            return res.render('register'); 
+        }else if(info.emailUsuario == User.email){
+            errors.message = "El email ya está registrado. Intenta con otro email";
+            res.locals.errors = errors; 
+            return res.render('register'); 
         }
-
+        else{
         //creamos un objeto literal con la informacion especifica del nuevo usuario//
         let usuarioNuevo = {
             nombre: info.nameUsuario,
@@ -115,15 +122,16 @@ const userController = {
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString(),
         }
-
         //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User"//
         User.create(usuarioNuevo)
         .then((result) => {
             //Redirigimos la informacion del usuario hacia la ruta de login//
             return res.redirect("/users/login")
         }).catch((err) => {
-            
+            console.log(errors)
         });
+    }
+
     },
 
     edit: (req,res) =>{

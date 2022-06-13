@@ -5,6 +5,7 @@ const logger = require('morgan');
 const app = express();
 let session = require('express-session')
 
+//Requerimento de database//
 const db = require("./database/models")
 const User = db.User
 
@@ -18,14 +19,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
+//Configuramos el session//
  app.use(session({
    secret : 'myApp',
    resave : false,
   saveUninitialized : true
   }));
   
- 
+ //Middleware de Session//
   app.use(function(req, res, next) {
     if ( req.session.User != undefined) {
     res.locals.User = req.session.User;
@@ -53,14 +54,13 @@ app.set('view engine', 'ejs');
   
   });
 
-//requerimiento de rutas: 
+//Requerimiento de rutas: 
 const mainRouter = require('./routes/main')
 const userRouter = require('./routes/user')
 const productRouter = require('./routes/product')
 
 
-
-//declarar el uso de rutas: 
+//Declarar el uso de rutas: 
 app.use('/', mainRouter);
 app.use('/user', userRouter);
 app.use('/product', productRouter);

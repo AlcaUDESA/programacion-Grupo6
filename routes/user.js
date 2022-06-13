@@ -3,7 +3,6 @@ const router = express.Router();
 const userController = require('../controller/userController')
 
 //Importaciones de Multer y Path//
-
 let multer = require('multer');
 let path = require('path');
 
