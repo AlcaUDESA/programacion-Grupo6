@@ -15,30 +15,37 @@
 			<div class="col-12">
 				<h2 class="formis-title">Registrate</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
 			<div class="formulariosRegister">
-				<form class="registerForm" action="/user/edit" method="GET">
-					<div class="campos">
-						<label for="imgPerfil">Foto de perfil:</label>
-						<input type="file" name="imagenUsuario" id="imgPerfil">
-					</div>
-					<div class="campos">
-						<label for="emailUsuario">Correo electrónico:</label>
-						<input type="email" name="emailUsuario" id="emailUsuario">
-					</div>
+
+				<form class="registerForm" action="/user/register" method="post" enctype="multipart/form-data">
+
 					<div class="campos">
 						<label for="nameUsuario">Nombre de usuario:</label>
 						<input type="text" name="nameUsuario" id="nameUsuario">
 					</div>
+
 					<div class="campos">
 						<label for="contraseniaUsuario">Contraseña:</label>
-						<input type="password" name="Password" id="contraseniaUsuario">
+						<input type="password" name="password" id="contraseniaUsuario">
 					</div>
+					
+					<div class="campos">
+						<label for="emailUsuario">Correo electrónico:</label>
+						<input type="email" name="emailUsuario" id="emailUsuario">
+					</div>
+
 					<div class="campos">
 						<label for="dateUpload">Fecha de nacimiento:</label>
 						<input type="date" name="dateUpload" id="dateUpload">
 					</div>
+					
+					<div class="campos">
+						<label for="imgPerfil">Foto de perfil:</label>
+						<input type="file" name="imagenUsuario" id="imgPerfil">
+					</div>
+
 					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
+
 				</form>
 			</div>
 		</div>

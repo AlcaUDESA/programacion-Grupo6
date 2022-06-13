@@ -1,7 +1,5 @@
-const database = require('../db/database')
-
+const database = require('../db/database');
 const bcrypt = require('bcryptjs');
-
 const db = require("../database/models");
 const res = require('express/lib/response');
 const { locals } = require('../app');
@@ -27,8 +25,7 @@ const userController = {
         return res.render('login')
     
     },
-
-
+    
     procesarLogin : (req, res) => {
 
         let errors = {};
@@ -75,8 +72,25 @@ const userController = {
         })}
     },
 
+    //Renderizar la vista que de registro que el usuario pidió//
     register: (req,res) =>{
         return res.render('register')
+    },
+
+    //Procesar la información enviada en el formulario de Register//
+    procesarRegister: (req,res) =>{   
+        //capturamos la información del formulario parap procesarla//
+        let info = req.body;
+        
+        let usuarioNuevo = {
+            nameUsuario: info.nameUsuario,
+            contra: info.contraseniaUsuario,
+            email: info.emailUsuario,
+            birthdate: info.dateUpload,
+            fotoUsuario: info.imagenUsuario,
+            created_At: new Date().toISOString(),
+            updated_At: new Date().toISOString(),
+        }
     },
     edit: (req,res) =>{
         return res.render('profile-edit',{
