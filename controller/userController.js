@@ -79,19 +79,33 @@ const userController = {
 
     //Procesar la información enviada en el formulario de Register//
     procesarRegister: (req,res) =>{   
-        //capturamos la información del formulario parap procesarla//
+
+        //capturamos la información del formulario para procesarla//
         let info = req.body;
-        
+        let picture = req.file.filename; 
+
+        //creamos un objeto literal con la informacion especifica del nuevo usuario//
         let usuarioNuevo = {
-            nameUsuario: info.nameUsuario,
-            contra: info.contraseniaUsuario,
+            nombre: info.nameUsuario,
+            //Hasheamos la contrasenia porque es informacion sensible//
+            contra: bcrypt.hashSync(info.password,10),
             email: info.emailUsuario,
             birthdate: info.dateUpload,
-            fotoUsuario: info.imagenUsuario,
-            created_At: new Date().toISOString(),
-            updated_At: new Date().toISOString(),
+            picture: info.imagenUsuario,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
         }
+
+        //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User"//
+        User.create(usuarioNuevo)
+        .then((result) => {
+            //Redirigimos la informacion del usuario hacia la ruta de login//
+            return res.redirect("/users/login")
+        }).catch((err) => {
+            
+        });
     },
+
     edit: (req,res) =>{
         return res.render('profile-edit',{
             usuario: database.usuario
