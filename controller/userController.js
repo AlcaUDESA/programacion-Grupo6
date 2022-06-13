@@ -80,9 +80,29 @@ const userController = {
     //Procesar la información enviada en el formulario de Register//
     procesarRegister: (req,res) =>{   
 
-        //capturamos la información del formulario para procesarla//
+        //capturamos la informacióndel formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
         let picture = req.file.filename; 
+
+        //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
+        let errors = {};
+
+        //Hacemos la validacion del formulario de register con condicionales//
+
+        if(info.nameUsuario == ""){
+            errors.message = "El nombre esta vacío";
+            res.locals.errors = errors;
+            return res.render('register')
+        } else if(info.password == ""){
+            errors.message = "La contraseña esta vacía";
+            res.locals.errors = errors;
+            return res.render('register')
+
+        } else if(info.password.length < 3){
+            errors.message = "La contraseña debe tener al menos tres caracteres"
+            res.locals.erros = errors;
+            return res.render('register')
+        }
 
         //creamos un objeto literal con la informacion especifica del nuevo usuario//
         let usuarioNuevo = {

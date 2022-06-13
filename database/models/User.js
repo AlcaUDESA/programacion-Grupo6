@@ -10,29 +10,35 @@ module.exports = (sequelize, dataTypes) =>{
       },
       dni: {
         type: dataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       contra: {
         type: dataTypes.STRING,
 
-        allowNull: false
+        allowNull: false,
       },
       email: {
         type: dataTypes.STRING,
         
-        allowNull: false
+        allowNull: false,
       },
       birthdate: {
        type: dataTypes.DATE,
-       allowNull: false
+       allowNull: false,
       },
       picture: {
         type: dataTypes.STRING,
-        allowNull: false
-      }
+        allowNull: false,
+      },
+      created_at: {
+        type: dataTypes.DATE
+      },
+      updated_at: {
+        type: dataTypes.DATE
+      },
     };
     let config = {
-        tableName: 'Usuario', 
+      tableName: 'Usuario', 
       timestamps: false,
     };
   
@@ -46,6 +52,6 @@ module.exports = (sequelize, dataTypes) =>{
     };
   
     
-    return User
+    return User;
 
 }

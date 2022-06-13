@@ -9,7 +9,9 @@ dni int not null,
 contra varchar(255) not null,
 email varchar(255) unique not null,
 birthdate DATE,
-picture varchar(255) not null
+picture varchar(255) not null,
+created_at DATETIME,
+updated_at DATETIME,
 );
 
 create table follower (
