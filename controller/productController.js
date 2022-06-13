@@ -28,6 +28,9 @@ const productController = {
     .then((results) =>{ res.redirect('/')
     })
     .catch((errors) =>{ console.log(errors)})
+  },
+  productEdit: (req,res) =>{
+
   }
 };
 module.exports = productController;
