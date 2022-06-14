@@ -22,7 +22,6 @@ const userController = {
     },
     login: (req, res) => {
         return res.render('login')
-    
     },
     
     procesarLogin : (req, res) => {
@@ -81,7 +80,7 @@ const userController = {
 
         //capturamos la informacióndel formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
-        let picture = req.file.filename; 
+        //let picture = req.file.filename; 
 
         //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
         let errors = {};
@@ -144,12 +143,15 @@ const userController = {
         User.update({
             email: req.body.emailUsuario,
             contra: req.body.Password,
+            nombre: rec.body.nameUsuario,
+            birthdate: req.body.dateUpload,
+            picture: rec.body.imagenUsuario
         
             
             
           },{
             where: {
-                id: req.cookies.id
+                id: req.session.User.id
             }
 
           })

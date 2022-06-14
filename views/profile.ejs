@@ -11,11 +11,19 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= usuario.foto%>" alt="foto de perfil" class="foto-perfil">
+				<% if (locals.User != undefined) { %>
+					<a href="/user/profile" class="">
+					  <img src="/images/usuarios/<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px;" />
+					</a>
+			   <% }else { %>
+					<a href="/user/profile" class="itemContenedora">
+					  <img src="/images/logo.png" style="width: 100px;" alt="usuario vacio" id="logo" />
+					</a>
+				<% } %> 
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title user-name"><%=User.dni%>
+					<h1 class="main-title user-name"><%=User.nombre%>
 						<a href="/user/profile/edit">
 							<i class="fas fa-cog"></i>
 						</a>
