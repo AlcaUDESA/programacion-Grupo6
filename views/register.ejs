@@ -17,7 +17,7 @@
 			</div>
 			<div class="formulariosRegister">
 
-				<form class="registerForm" action="/user/register" method="post" enctype="multipart/form-data">
+				<form class="registerForm" action="/user/register" method="POST" enctype="multipart/form-data">
 
 					<div class="campos">
 						<label for="nameUsuario">Nombre de usuario:</label>
@@ -33,7 +33,11 @@
 						<label for="emailUsuario">Correo electrónico:</label>
 						<input type="email" name="emailUsuario" id="emailUsuario">
 					</div>
-
+					
+					<div class="campos">
+						<label for="dni">Documento Nacional de Identificación:</label>
+						<input type="number" name="dni" id="dni">
+					</div>
 					<div class="campos">
 						<label for="dateUpload">Fecha de nacimiento:</label>
 						<input type="date" name="dateUpload" id="dateUpload">

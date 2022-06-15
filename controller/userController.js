@@ -22,6 +22,7 @@ const userController = {
     },
     login: (req, res) => {
         return res.render('login')
+    
     },
     
     procesarLogin : (req, res) => {
@@ -78,9 +79,9 @@ const userController = {
     //Procesar la información enviada en el formulario de Register//
     procesarRegister: (req,res) =>{   
 
-        //capturamos la informacióndel formulario para procesarla, para ello lo guardamos en una variable//
+        //capturamos la información del formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
-        //let picture = req.file.filename; 
+        let picture = req.file.filename; 
 
         //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
         let errors = {};
@@ -111,25 +112,26 @@ const userController = {
         }
         else{
         //creamos un objeto literal con la informacion especifica del nuevo usuario//
-        let usuarioNuevo = {
-            nombre: info.nameUsuario,
-            //Hasheamos la contrasenia porque es informacion sensible//
-            contra: bcrypt.hashSync(info.password,10),
-            email: info.emailUsuario,
-            birthdate: info.dateUpload,
-            picture: info.imagenUsuario,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-        }
+            let usuarioNuevo = {
+                nombre: info.nameUsuario,
+                //Hasheamos la contrasenia porque es informacion sensible//
+                contra: bcrypt.hashSync(info.password,10),
+                email: info.emailUsuario,
+                birthdate: info.dateUpload,
+                dni: info.dni,
+                picture: picture,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+            }
         //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User"//
-        User.create(usuarioNuevo)
-        .then((result) => {
-            //Redirigimos la informacion del usuario hacia la ruta de login//
-            return res.redirect("/users/login")
-        }).catch((err) => {
-            console.log(errors)
-        });
-    }
+            User.create(usuarioNuevo)
+            .then((result) => {
+                //Redirigimos la informacion del usuario hacia la ruta de login//
+                return res.redirect("/user/login")
+            }).catch((err) => {
+                console.log(err)
+            });
+        }
 
     },
 
@@ -143,15 +145,12 @@ const userController = {
         User.update({
             email: req.body.emailUsuario,
             contra: req.body.Password,
-            nombre: rec.body.nameUsuario,
-            birthdate: req.body.dateUpload,
-            picture: rec.body.imagenUsuario
         
             
             
           },{
             where: {
-                id: req.session.User.id
+                id: req.cookies.id
             }
 
           })
