@@ -13,7 +13,7 @@
 			<div class="img-container offset-3 col-2">
 				<% if (locals.User != undefined) { %>
 					<a href="/user/profile" class="">
-					  <img src="/images/usuarios/<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px;" />
+					  <img src="/images/<%= User.picture %>" alt="Imagen de <%= User.nombre %>" id="logo" style="width: 100px;" radius="50" />
 					</a>
 			   <% }else { %>
 					<a href="/user/profile" class="itemContenedora">

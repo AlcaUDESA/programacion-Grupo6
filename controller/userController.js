@@ -13,6 +13,7 @@ const userController = {
 
     show: (req,res)=>{
         
+       
         return res.render('profile', {
             usuario: database.usuario,
             productos: database.productos
@@ -40,23 +41,30 @@ const userController = {
             res.locals.errors = errors;
             return res.render('login'); 
         } else {
-            User.findOne({where: [ {email: req.body.email}]})
-            .then((result) =>{
-                if (result != null) {
+                    User.findOne({where: [ {email: req.body.email}]})
 
-                let contraEncrip = bcrypt.compareSync( req.body.contra , result.contra)
-                if (contraEncrip)
-                req.session.User = result.dataValue
-                if (req.body.remember != undefined) {
-                    res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
-                    return res.redirect("/")
-                 } 
-                 else{
-                     errors.message = "Contraseña incorrecta";
-                     res.locals.errors = errors;
-                     return res.render('login');
-                 }
-            }else {
+                     .then((result) =>{
+                        if (result != null) {
+
+                         let contraEncrip = bcrypt.compareSync( req.body.contra , result.contra)
+                            if (contraEncrip) {
+
+                            req.session.User = result.dataValues;
+
+                            if (req.body.remember != undefined) {
+                                res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
+                            }
+
+                             return res.redirect("/")
+                             } 
+                        else 
+                        {
+                        errors.message = "Contraseña incorrecta";
+                        res.locals.errors = errors;
+                        return res.render('login');
+                }
+
+            } else {
                 errors.message = "Email no registrado";
                 res.locals.errors = errors;
                 return res.render('login');
@@ -136,9 +144,12 @@ const userController = {
     procesarEdit: (req,res) => {
 
         User.update({
+            picture: req.body.imagenUsuario,
+            nombre: req.body.nameUsuario,
             email: req.body.emailUsuario,
             contra: req.body.Password,
-        
+            birthdate: req.body.dateUpload,
+            
             
             
           },{

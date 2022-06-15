@@ -21,7 +21,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
-						<img class="icon" src="/images/logo.png"">
+						<img class="icon" src="/images/logo.png">
 					</a>
 				</div>
 	
@@ -54,7 +54,7 @@
 					<li>
 						<% if (locals.User != undefined) { %>
 							<a href="/user/profile" class="">
-							  <img src="/images/usuarios/<%= User.picture %> " alt="Imagen de <%= User.email %>" id="logo" style="width: 50px;" />
+							  <img src="/images/<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px;" />
 							</a>
 					   <% }else { %>
 							<a href="/user/profile" class="itemContenedora">
@@ -63,7 +63,7 @@
 						<% } %> 
 					</li>
 					<li><a href="/user/profile">
-						<%=usuario.usuario%> <i class="fas fa-user"></i>
+						<%=User.nombre%> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
