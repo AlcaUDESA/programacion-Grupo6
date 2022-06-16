@@ -81,13 +81,12 @@ const userController = {
 
         //capturamos la informacióndel formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
-        let picture = req.file.filename; 
+        //Creamos una variable guardando la foto de perfil que el usuario quiere subir al storage//
 
         //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
         let errors = {};
 
         //Hacemos la validacion del formulario de register con condicionales//
-
         if(info.nameUsuario == ""){
             errors.message = "El nombre esta vacío";
             res.locals.errors = errors;
@@ -111,23 +110,24 @@ const userController = {
             return res.render('register'); 
         }
         else{
-        //creamos un objeto literal con la informacion especifica del nuevo usuario//
+        //creamos un objeto literal con la informacion especifica del nuevo usuario que se quiere dar de alta//
         let usuarioNuevo = {
             nombre: info.nameUsuario,
             //Hasheamos la contrasenia porque es informacion sensible//
             contra: bcrypt.hashSync(info.password,10),
             email: info.emailUsuario,
             birthdate: info.dateUpload,
-            picture: info.imagenUsuario,
+            picture: picture,
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString(),
         }
-        //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User"//
+        //Enviamos el objeto literal como nuevo registro a nuestro modelo de datos de alias "User"//
         User.create(usuarioNuevo)
         .then((result) => {
             //Redirigimos la informacion del usuario hacia la ruta de login//
             return res.redirect("/users/login")
         }).catch((err) => {
+            //pasamos por consola cualquier tipo de error que pueda llegar a existir
             console.log(errors)
         });
     }
