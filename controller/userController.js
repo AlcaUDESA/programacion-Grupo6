@@ -10,13 +10,25 @@ const Productos = db.Product;
 
 const userController = {
 
-
+    
     show: (req,res)=>{
         
+        let id = req.params.id;
+
+    User.findByPk(id, {
+      include: {
+        all: true,
+        nested: true
+      }})
+      .then((result) =>{
+          
         return res.render('profile', {
-            usuario: database.usuario,
-            productos: database.productos
-        })
+            nombre: result.nombre,
+            email: result.email,
+            picture: result.picture,
+            productos: result.Product
+            
+        })})
         
 
     },
@@ -79,7 +91,7 @@ const userController = {
     //Procesar la información enviada en el formulario de Register//
     procesarRegister: (req,res) =>{   
 
-        //capturamos la informacióndel formulario para procesarla, para ello lo guardamos en una variable//
+        //capturamos la información del formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
         //Creamos una variable guardando la foto de perfil que el usuario quiere subir al storage//
 
@@ -110,51 +122,54 @@ const userController = {
             return res.render('register'); 
         }
         else{
-        //creamos un objeto literal con la informacion especifica del nuevo usuario que se quiere dar de alta//
-        let usuarioNuevo = {
-            nombre: info.nameUsuario,
-            //Hasheamos la contrasenia porque es informacion sensible//
-            contra: bcrypt.hashSync(info.password,10),
-            email: info.emailUsuario,
-            birthdate: info.dateUpload,
-            picture: picture,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
+        //creamos un objeto literal con la informacion especifica del nuevo usuario//
+            let usuarioNuevo = {
+                nombre: info.nameUsuario,
+                //Hasheamos la contrasenia porque es informacion sensible//
+                contra: bcrypt.hashSync(info.password,10),
+                email: info.emailUsuario,
+                birthdate: info.dateUpload,
+                dni: info.dni,
+                picture: picture,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+            }
+        //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User"//
+            User.create(usuarioNuevo)
+            .then((result) => {
+                //Redirigimos la informacion del usuario hacia la ruta de login//
+                return res.redirect("/user/login")
+            }).catch((err) => {
+                console.log(err)
+            });
         }
-        //Enviamos el objeto literal como nuevo registro a nuestro modelo de datos de alias "User"//
-        User.create(usuarioNuevo)
-        .then((result) => {
-            //Redirigimos la informacion del usuario hacia la ruta de login//
-            return res.redirect("/users/login")
-        }).catch((err) => {
-            //pasamos por consola cualquier tipo de error que pueda llegar a existir
-            console.log(errors)
-        });
-    }
 
     },
 
     edit: (req,res) =>{
         return res.render('profile-edit',{
-            usuario: database.usuario
+            
         })
     },
     procesarEdit: (req,res) => {
 
         User.update({
+            picture: req.body.imagenUsuario,
+            nombre: req.body.nameUsuario,
             email: req.body.emailUsuario,
-            contra: req.body.Password,
-        
+            contra: bcrypt.hashSync(req.body.Password,10),
+            birthdate: req.body.dateUpload,
+            
             
             
           },{
             where: {
-                id: req.cookies.id
+                id: req.params.id
             }
 
           })
           .then((result) => {
-            return res.redirect("/user/profile");
+            return res.redirect("/user/login");
           }).catch((err) => {
             return res.send(err)
           });

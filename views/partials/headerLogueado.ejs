@@ -21,7 +21,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
-						<img class="icon" src="/images/logo.png"">
+						<img class="icon" src="/images/logo.png">
 					</a>
 				</div>
 	
@@ -53,17 +53,17 @@
 				<ul class="right-navbar">
 					<li>
 						<% if (locals.User != undefined) { %>
-							<a href="/user/profile" class="">
-							  <img src="/images/usuarios/<%= User.picture %> " alt="Imagen de <%= User.email %>" id="logo" style="width: 50px;" />
+							<a href="/user/profile/<%=User.id%>" class="">
+							  <img src="/images/<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px;" />
 							</a>
 					   <% }else { %>
-							<a href="/user/profile" class="itemContenedora">
+							<a href="/user/profile/<%=User.id%>" class="itemContenedora">
 							  <img src="/images/logo.png" style="width: 50px;" alt="usuario vacio" id="logo" />
 							</a>
 						<% } %> 
 					</li>
-					<li><a href="/user/profile">
-						<%=usuario.usuario%> <i class="fas fa-user"></i>
+					<li><a href="/user/profile/<%=User.id%>">
+						<%=User.nombre%> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>

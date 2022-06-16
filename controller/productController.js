@@ -18,12 +18,13 @@ const productController = {
   })
   },
   productAdd: (req, res) => {
-    console.log(req.body);
     db.Product.create({
       nombre: req.body.nameProduct,
       description: req.body.description,
-      postDate: req.body.dateUpload,
-      
+      image: req.file.filename,
+      upload_at: req.body.dateUpload,
+      created_at: new Date().toISOString(),
+      usuario_id: req.cookies.id
     })
     .then((results) =>{ res.redirect('/')
     })

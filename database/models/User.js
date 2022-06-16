@@ -8,6 +8,10 @@ module.exports = (sequelize, dataTypes) =>{
         primaryKey: true,
         autoIncrement: true,
       },
+      nombre: {
+        type: dataTypes.STRING,
+        allowNull: false
+      },
       dni: {
         type: dataTypes.INTEGER,
         allowNull: false,
@@ -29,12 +33,6 @@ module.exports = (sequelize, dataTypes) =>{
       picture: {
         type: dataTypes.STRING,
         allowNull: false,
-      },
-      created_at: {
-        type: dataTypes.DATE
-      },
-      updated_at: {
-        type: dataTypes.DATE
       },
     };
     let config = {

@@ -21,7 +21,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="formulariosRegister">
-				<form class="registerForm" action="/user/profile/edit" method="post">
+				<form class="registerForm" action="/user/profile/edit/<%= User.id  %> " method="post">
 					<div class="campos">
 						<label for="imgPerfil">Foto de perfil:</label>
 						<input type="file" name="imagenUsuario" id="imgPerfil">

@@ -11,14 +11,24 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= usuario.foto%>" alt="foto de perfil" class="foto-perfil">
+				<% if (locals.User != undefined) { %>
+					
+					  <img src="/images/<%= User.picture %>" alt="Imagen de <%= User.nombre %>" id="logo" style="width: 100px;" radius="50" />
+				
+			   <% }else { %>
+					
+					  <img src="/images/logo.png" style="width: 100px;" alt="usuario vacio" id="logo" />
+					
+				<% } %> 
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title user-name"><%=User.dni%>
-						<a href="/user/profile/edit">
+					<h1 class="main-title user-name"><%=User.nombre%>
+						
+						<a href="/user/profile/edit/<%=User.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
+						
 					</h1>
 					<a class="btn mt-3 ml-4 " href="">SEGUIR</a>
 				</div>
@@ -47,11 +57,11 @@
 					<section class="product-box">
 						<a href="/product/<%= productos[i].id %>">
 							<figure class="product-box_image">
-								<img src=<%= productos[i].foto %> alt=<%= productos[i].nombre %>>
+								<img src="/uploads/<%= productos[i].image %>" alt=<%= productos[i].nombre %>>
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre %></h2>
-								<p><%= productos[i].descripcion %> </p>
+								<p><%= productos[i].description %> </p>
 							</article>
 						</a>
 					</section>

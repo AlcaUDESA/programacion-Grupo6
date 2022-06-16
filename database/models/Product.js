@@ -34,7 +34,7 @@ module.exports = (sequelize, dataTypes) =>{
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-    tableName: 'product'
+    tableName: 'producto'
   };
   let Product = sequelize.define(alias,cols,config);
 
