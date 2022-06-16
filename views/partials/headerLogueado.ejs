@@ -53,16 +53,16 @@
 				<ul class="right-navbar">
 					<li>
 						<% if (locals.User != undefined) { %>
-							<a href="/user/profile" class="">
+							<a href="/user/profile/<%=User.id%>" class="">
 							  <img src="/images/<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px;" />
 							</a>
 					   <% }else { %>
-							<a href="/user/profile" class="itemContenedora">
+							<a href="/user/profile/<%=User.id%>" class="itemContenedora">
 							  <img src="/images/logo.png" style="width: 50px;" alt="usuario vacio" id="logo" />
 							</a>
 						<% } %> 
 					</li>
-					<li><a href="/user/profile">
+					<li><a href="/user/profile/<%=User.id%>">
 						<%=User.nombre%> <i class="fas fa-user"></i>
 						</a>
 					</li>

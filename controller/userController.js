@@ -10,14 +10,25 @@ const Productos = db.Product;
 
 const userController = {
 
-
+    
     show: (req,res)=>{
         
-       
+        let id = req.params.id;
+
+    User.findByPk(id, {
+      include: {
+        all: true,
+        nested: true
+      }})
+      .then((result) =>{
+          
         return res.render('profile', {
-            usuario: database.usuario,
-            productos: database.productos
-        })
+            nombre: result.nombre,
+            email: result.email,
+            picture: result.picture,
+            productos: result.Product
+            
+        })})
         
 
     },
@@ -138,7 +149,7 @@ const userController = {
 
     edit: (req,res) =>{
         return res.render('profile-edit',{
-            usuario: database.usuario
+            
         })
     },
     procesarEdit: (req,res) => {
@@ -147,19 +158,19 @@ const userController = {
             picture: req.body.imagenUsuario,
             nombre: req.body.nameUsuario,
             email: req.body.emailUsuario,
-            contra: req.body.Password,
+            contra: bcrypt.hashSync(req.body.Password,10),
             birthdate: req.body.dateUpload,
             
             
             
           },{
             where: {
-                id: req.cookies.id
+                id: req.params.id
             }
 
           })
           .then((result) => {
-            return res.redirect("/user/profile");
+            return res.redirect("/user/login");
           }).catch((err) => {
             return res.send(err)
           });

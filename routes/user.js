@@ -20,7 +20,7 @@ let storage = multer.diskStorage({
 let upload = multer({storage : storage})
 
 //Rutas existentes//
-router.get('/profile' , userController.show)
+router.get('/profile/:id' , userController.show)
 
 router.get('/login', userController.login)
 router.post('/login', userController.procesarLogin)
@@ -28,8 +28,8 @@ router.post('/login', userController.procesarLogin)
 router.get('/register', userController.register)
 router.post('/register',upload.single('imagenUsuario'), userController.procesarRegister)
 
-router.get('/profile/edit', userController.edit)
-router.post('/profile/edit', userController.procesarEdit)
+router.get('/profile/edit/:id', userController.edit)
+router.post('/profile/edit/:id', userController.procesarEdit)
 
 router.post("/logout", userController.logout)
 
