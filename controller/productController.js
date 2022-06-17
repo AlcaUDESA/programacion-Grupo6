@@ -11,6 +11,7 @@ const productController = {
   })
   },
   showAdd: (req, res)=>{
+    console.log(req.session.User.id)
     return res.render('product-add', {
       usuario: database.usuario,
       comentarios: database.comentarios,
@@ -24,7 +25,7 @@ const productController = {
       image: req.file.filename,
       upload_at: req.body.dateUpload,
       created_at: new Date().toISOString(),
-      usuario_id: req.cookies.id
+      usuario_id: req.session.User.id
     })
     .then((results) =>{ res.redirect('/')
     })
