@@ -11,7 +11,7 @@ email varchar(255) unique not null,
 birthdate DATE,
 picture varchar(255) not null,
 created_at DATETIME,
-updated_at DATETIME,
+updated_at DATETIME
 );
 
 create table follower (
@@ -33,16 +33,6 @@ created_at DATETIME,
 updated_at DATETIME,
 upload_at DATETIME,
 usuario_id int unsigned not null,
-foreign key (usuario_id) references usuario(id)
-);
-
-create table me_gusta(
-id int unsigned primary key not null auto_increment,
-producto_id int unsigned,
-usuario_id int unsigned,
-created_at DATETIME,
-updated_at DATETIME,
-foreign key (producto_id) references producto(id),
 foreign key (usuario_id) references usuario(id)
 );
 

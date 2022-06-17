@@ -98,13 +98,12 @@ const userController = {
 
         //capturamos la información del formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
-        let picture = req.file.filename; 
+        //Creamos una variable guardando la foto de perfil que el usuario quiere subir al storage//
 
         //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
         let errors = {};
 
         //Hacemos la validacion del formulario de register con condicionales//
-
         if(info.nameUsuario == ""){
             errors.message = "El nombre esta vacío";
             res.locals.errors = errors;
@@ -113,7 +112,6 @@ const userController = {
             errors.message = "La contraseña esta vacía";
             res.locals.errors = errors;
             return res.render('register')
-
         } else if(info.password.length < 3){
             errors.message = "La contraseña debe tener al menos tres caracteres";
             res.locals.errors = errors;
@@ -136,7 +134,7 @@ const userController = {
                 email: info.emailUsuario,
                 birthdate: info.dateUpload,
                 dni: info.dni,
-                picture: picture,
+                picture: req.file.filename,
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString(),
             }
