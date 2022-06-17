@@ -12,7 +12,6 @@ let storage = multer.diskStorage({
         cb(null, path.join(__dirname, './public/images/'));
     },
     filename : function(req, file, cb) {
-            //    Tenemos  fotoDePerfil123.jpg //
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });

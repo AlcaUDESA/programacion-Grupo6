@@ -24,48 +24,23 @@
 				<h2 class="products-title">Novedades</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-		<% for(let i = 0; i < productos.length; i++){ %>
+			<% for(let i = 0; i < results.length; i++){ %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/product/<%= productos[i].id %>">
+					<a href="/product/id/:<%=id%>">
 						<figure class="product-box_image">
-							<img src=<%= productos[i].foto %> alt=<%= productos[i].nombre %>>
+							<img src=<%= image %> alt=<%= nombre %>>
 						</figure>
 						<article class="product-box_data">
-							<h2><%= productos[i].nombre %></h2>
-							<p><%= productos[i].descripcion %> </p>
-							<p>Comentarios: <%= comentarios.length %></p>
+							<h2><%= nombre %></h2>
+							<p><%= description %></p>
 						</article>
 					</a>
 				</section>
 			</div>
-		<% } %>
+			<% } %>
 	</div>
 </div>
-	<!-- /Más comentados -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Mas Comentados</h2>
-			</div>
-	<% for(let i = 0; i < productos.length; i++){ %>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product/<%= productos[i].id %>">
-						<figure class="product-box_image">
-							<img src=<%= productos[i].foto %> alt=<%= productos[i].nombre %>>
-						</figure>
-						<article class="product-box_data">
-							<h2><%= productos[i].nombre %></h2>
-							<p><%= productos[i].descripcion %> </p>
-							<p>Comentarios: <%= comentarios.length %></p>
-						</article>
-					</a>
-				</section>
-			</div>
-	<% } %>
-		</div>
-	</div>
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->

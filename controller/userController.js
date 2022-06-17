@@ -108,7 +108,6 @@ const userController = {
             errors.message = "La contraseña esta vacía";
             res.locals.errors = errors;
             return res.render('register')
-
         } else if(info.password.length < 3){
             errors.message = "La contraseña debe tener al menos tres caracteres";
             res.locals.errors = errors;
@@ -131,7 +130,7 @@ const userController = {
                 email: info.emailUsuario,
                 birthdate: info.dateUpload,
                 dni: info.dni,
-                picture: picture,
+                picture: req.file.filename,
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString(),
             }
