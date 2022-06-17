@@ -26,7 +26,8 @@ const userController = {
             nombre: result.nombre,
             email: result.email,
             picture: result.picture,
-            productos: result.Product
+            productos: result.Product,
+            
             
         })})
         

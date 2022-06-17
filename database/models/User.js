@@ -38,6 +38,8 @@ module.exports = (sequelize, dataTypes) =>{
     let config = {
       tableName: 'Usuario', 
       timestamps: false,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
     };
   
     const User = sequelize.define(alias,cols,config);
@@ -46,7 +48,14 @@ module.exports = (sequelize, dataTypes) =>{
       User.hasMany(models.Product, {
         as: 'Product',
         foreignKey: 'usuario_id'
+
       })
+      User.associate = (models) =>{
+        User.hasMany(models.Coments, {
+          as: 'Coments',
+          foreignKey: 'usuario_id'
+        })
+      };
     };
   
     
