@@ -21,15 +21,19 @@ const userController = {
         nested: true
       }})
       .then((result) =>{
-          
-        return res.render('profile', {
+        
+        let infoUser =  {
             nombre: result.nombre,
             email: result.email,
             picture: result.picture,
             productos: result.Product,
+            comenta: result.Coments,
             
-            
-        })})
+        }
+        console.log(infoUser)
+        return res.render('profile',infoUser )
+       
+    })
         
 
     },

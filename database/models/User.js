@@ -49,14 +49,13 @@ module.exports = (sequelize, dataTypes) =>{
         as: 'Product',
         foreignKey: 'usuario_id'
 
-      })
-      User.associate = (models) =>{
-        User.hasMany(models.Coments, {
+      }),
+      User.hasMany(models.Coments, {
           as: 'Coments',
           foreignKey: 'usuario_id'
         })
       };
-    };
+    
   
     
     return User;

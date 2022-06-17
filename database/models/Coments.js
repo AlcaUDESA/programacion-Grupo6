@@ -1,6 +1,7 @@
 module.exports = (sequelize, dataTypes) =>{
     let alias = 'Coments'
     let cols = {
+
       id: {
         type: dataTypes.INTEGER,
         primaryKey: true,
@@ -37,6 +38,7 @@ module.exports = (sequelize, dataTypes) =>{
           as: 'User',
           foreignKey: 'usuario_id'
         })
+    
       }
     return Coments
 }
