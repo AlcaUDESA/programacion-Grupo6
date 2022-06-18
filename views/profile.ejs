@@ -17,7 +17,7 @@
 			<div class="img-container offset-3 col-2">
 				<% if (locals.User != undefined) { %>
 					
-					  <img src="/images/users/<%= User.picture %>" alt="Imagen de <%= User.nombre %>" id="logo" style="width: 100px;" radius="50" />
+					  <img src="<%= picture %>" alt="Imagen de <%= nombre %>" id="logo" style="width: 100px;" radius="50" />
 				
 			   <% }else { %>
 					
@@ -27,29 +27,28 @@
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title user-name"><%=User.nombre%>
+					<h1 class="main-title user-name"><%=nombre%>
 					
 						<% if (locals.User.id = idUrl) { %>
 
 							<a href="/user/profile/edit/<%=User.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
+							
+					<% }else { %>
 						
+						<a class="btn mt-3 ml-4 " href="">SEGUIR</a> 
 						<% } %> 
 						
 					</h1>
-					<% if (locals.User.id != idUrl) { %>
-
-						<a class="btn mt-3 ml-4 " href="">SEGUIR</a> 
 					
-					<% } %> 
 						
 					
 					
 				</div>
 				<div>
 					<ul class="info-usuario-counter">
-						<li><%=User.email%></li>
+						<li><%=email%></li>
 						<li><%= productos.length %>  productos subidos</li>
 						<li><%=comenta.length%> comentarios</li>
 						<li>300 seguidores</li>
@@ -73,7 +72,7 @@
 					<section class="product-box">
 						<a href="/product/<%= productos[i].id %>">
 							<figure class="product-box_image">
-								<img src="/images/products/<%= productos[i].image %>" alt=<%= productos[i].nombre %>>
+								<img src="<%= productos[i].image %>" alt=<%= productos[i].nombre %>>
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre %></h2>
