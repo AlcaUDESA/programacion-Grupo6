@@ -174,6 +174,19 @@ const userController = {
          
     },
 
+    follow: (req, res) => { 
+
+       
+        User.create({
+
+            follower_id: locals.User.id,
+            following_id: req.params.id,
+        }
+            
+
+        )
+    },
+
     logout : (req, res) => {
         req.session.destroy();
         res.clearCookie('id');

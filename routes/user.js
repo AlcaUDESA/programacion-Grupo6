@@ -32,4 +32,6 @@ router.post('/profile/edit/:id', userController.procesarEdit)
 
 router.post("/logout", userController.logout)
 
+router.get('/profile/seguir/:id', userController.follow)
+
 module.exports = router;
