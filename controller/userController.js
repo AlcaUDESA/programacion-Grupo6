@@ -1,16 +1,8 @@
-const database = require('../db/database');
 const bcrypt = require('bcryptjs');
 const db = require("../database/models");
-const res = require('express/lib/response');
-const { locals } = require('../app');
 const User = db.User;
-const Product = db.Product;
-
-
 
 const userController = {
-
-    
     show: (req,res)=>{
         
         let id = req.params.id;
@@ -122,20 +114,21 @@ const userController = {
             res.locals.errors = errors; 
             return res.render('register'); 
         }else if(info.emailUsuario == User.email){
-            errors.message = "El email ya está registrado. Intenta con otro email";
+            errors.message = "Debes escribir un email para registrarte";
             res.locals.errors = errors; 
-            return res.render('register'); 
+            return res.render('register');
         }
         else{
         //creamos un objeto literal con la informacion especifica del nuevo usuario//
+            let picture = req.file.filename
             let usuarioNuevo = {
                 nombre: info.nameUsuario,
                 //Hasheamos la contrasenia porque es informacion sensible//
-                contra: bcrypt.hashSync(info.password,10),
+                contra: bcrypt.hashSync(info.password,12),
                 email: info.emailUsuario,
                 birthdate: info.dateUpload,
                 dni: info.dni,
-                picture: req.file.filename,
+                picture: picture,
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString(),
             }
@@ -143,7 +136,7 @@ const userController = {
             User.create(usuarioNuevo)
             .then((result) => {
                 //Redirigimos la informacion del usuario hacia la ruta de login//
-                return res.redirect("/user/login")
+                res.redirect("/user/login")
             }).catch((err) => {
                 console.log(err)
             });
