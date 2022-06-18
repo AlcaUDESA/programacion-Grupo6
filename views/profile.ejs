@@ -29,15 +29,15 @@
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title user-name"><%=nombre%>
 					
-						<% if (locals.User.id = idUrl) { %>
+						<% if (locals.User.id == idUrl) { %>
 
 							<a href="/user/profile/edit/<%=User.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
-						
-						
-						<% } %> 
+						<% }else { %>
 						<a class="btn mt-3 ml-4 " href="/user/profile/seguir/<%=User.id%>">SEGUIR</a> 
+						<% } %> 
+						
 					</h1>
 					
 						
