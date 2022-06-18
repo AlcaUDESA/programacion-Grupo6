@@ -14,11 +14,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center titulo-producto">
-			<h2 id="products-title"><% for(let i = 0; i < productos.length; i++){ %>
-				<% if(idSelected == productos[i].id){ %>
-					<%= productos[i].nombre %>
-			<%	} %>
-			<% } %>	</h2> 
+			<h2 id="products-title"> <%= producto.nombre %>	</h2> 
 			<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p>
@@ -26,25 +22,10 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
+					<img src='/images/products/<%= producto.image %>' alt="" class="product-detail-img">
 
-
-					
-					<img src=<% for(let i = 0; i < productos.length; i++){ %>
-						<% if(idSelected == productos[i].id){ %>
-							<%= productos[i].foto %>
-					<%	} %>
-					<% } %> alt="" class="product-detail-img">
-
-					<p class="product-detail-description">
-						<% for(let i = 0; i < productos.length; i++){ %>
-							<% if(idSelected == productos[i].id){ %>
-								<%= productos[i].descripcion %> 
-						<%	} %>
-						<% } %>
-					</p>
-
+					<p class="product-detail-description"><%= producto.description %></p>
 				</article>
-				
 				<div class="col-12 col-lg-4">			
 					<section class="comments">
 						<% for (let i = 0; i < comentarios.length; i++)  {%>
@@ -52,8 +33,8 @@
 							<img src="https://images.assetsdelivery.com/compings_v2/thesomeday123/thesomeday1231709/thesomeday123170900021.jpg" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/user/profile"><%= comentarios[i].nombreDelUsuario %>: </a> </strong>
-								<p> <%= comentarios[i].comentarioDelUsuario%></p>
+								<strong> <a href="/user/profile/<%= comentarios[i].dataValues.User.id %> %>"><%= comentarios[i].dataValues.User.nombre %></a> </strong>
+								<p><%= comentarios[i].dataValues.contenido %></p>
 							</div>
 						</article>
 						<%}%>	
@@ -68,9 +49,6 @@
 		</div>
 	</div>
 	<!-- /product detail -->
-
-
-
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->
