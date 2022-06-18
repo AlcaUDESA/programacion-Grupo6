@@ -4,7 +4,7 @@ const db = require("../database/models");
 const res = require('express/lib/response');
 const { locals } = require('../app');
 const User = db.User;
-const Productos = db.Product;
+const Product = db.Product;
 
 
 

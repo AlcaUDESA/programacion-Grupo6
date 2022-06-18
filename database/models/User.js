@@ -61,7 +61,6 @@ module.exports = (sequelize, dataTypes) =>{
           foreignKey: 'usuario_id'
         })
 
-     
       };
     
   
