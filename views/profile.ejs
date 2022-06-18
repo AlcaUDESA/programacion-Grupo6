@@ -17,7 +17,7 @@
 			<div class="img-container offset-3 col-2">
 				<% if (locals.User != undefined) { %>
 					
-					  <img src="/images/<%= User.picture %>" alt="Imagen de <%= User.nombre %>" id="logo" style="width: 100px;" radius="50" />
+					  <img src="/images/users/<%= User.picture %>" alt="Imagen de <%= User.nombre %>" id="logo" style="width: 100px;" radius="50" />
 				
 			   <% }else { %>
 					
@@ -73,7 +73,7 @@
 					<section class="product-box">
 						<a href="/product/<%= productos[i].id %>">
 							<figure class="product-box_image">
-								<img src="/uploads/<%= productos[i].image %>" alt=<%= productos[i].nombre %>>
+								<img src="/images/products/<%= productos[i].image %>" alt=<%= productos[i].nombre %>>
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre %></h2>
