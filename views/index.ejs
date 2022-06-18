@@ -27,9 +27,9 @@
 			<% for(let i = 0; i < results.length; i++){ %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/product/id/:<%=id%>">
+					<a href="/product/id/<%=id%>">
 						<figure class="product-box_image">
-							<img src=<%= image %> alt=<%= nombre %>>
+							<img src="/public/images/products/<%image %>" alt=<%= nombre %>>
 						</figure>
 						<article class="product-box_data">
 							<h2><%= nombre %></h2>
