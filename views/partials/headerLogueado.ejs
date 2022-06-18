@@ -54,7 +54,7 @@
 					<li>
 						<% if (locals.User != undefined) { %>
 							<a href="/user/profile/<%=User.id%>" class="">
-							  <img src="<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px;" />
+							  <img src="<%= User.picture %> " alt="Imagen de <%= User.nombre %>" id="logo" style="width: 50px; height: 50px;" class="logo"  />
 							</a>
 					   <% }else { %>
 							<a href="/user/profile/<%=User.id%>" class="itemContenedora">
