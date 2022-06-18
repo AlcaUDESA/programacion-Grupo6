@@ -34,6 +34,12 @@ module.exports = (sequelize, dataTypes) =>{
         type: dataTypes.STRING,
         allowNull: false,
       },
+      created_at: {
+        type: dataTypes.DATE
+      },
+      updated_at: {
+        type: dataTypes.DATE
+      },
     };
     let config = {
       tableName: 'Usuario', 
@@ -54,6 +60,8 @@ module.exports = (sequelize, dataTypes) =>{
           as: 'Coments',
           foreignKey: 'usuario_id'
         })
+
+     
       };
     
   

@@ -28,6 +28,7 @@ const userController = {
             picture: result.picture,
             productos: result.Product,
             comenta: result.Coments,
+            idUrl: req.params.id,
             
         }
         console.log(infoUser)

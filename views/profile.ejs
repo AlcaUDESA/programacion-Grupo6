@@ -4,7 +4,11 @@
 <%- include('partials/head') %>
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado') %>
+	<% if (locals.User != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs')  %> 
+	<% }else {%>
+		<%- include('./partials/header.ejs')  %> 
+	<% } %> 
 	<!-- /Header -->
 
 	<!-- Datos del usuario -->
@@ -24,13 +28,24 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title user-name"><%=User.nombre%>
-						
-						<a href="/user/profile/edit/<%=User.id%>">
+					
+						<% if (locals.User.id = idUrl) { %>
+
+							<a href="/user/profile/edit/<%=User.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
 						
+						<% } %> 
+						
 					</h1>
-					<a class="btn mt-3 ml-4 " href="">SEGUIR</a>
+					<% if (locals.User.id != idUrl) { %>
+
+						<a class="btn mt-3 ml-4 " href="">SEGUIR</a> 
+					
+					<% } %> 
+						
+					
+					
 				</div>
 				<div>
 					<ul class="info-usuario-counter">
