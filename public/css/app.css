@@ -731,17 +731,6 @@ input#emailUsuario {
     margin: auto;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 .errorRegister{
   border: solid var(--brown) 2px;
   border-radius: 3px;
