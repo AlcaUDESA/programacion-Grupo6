@@ -10,7 +10,8 @@ const productController = {
     let commentSelected = Coments.findAll({where:{producto_id: req.params.id}, include:[{association: 'User'}]})
     Promise.all([productSelected, commentSelected])
     .then((result) =>{
-      console.log(result[1])
+      req.session.product = req.params.id
+      console.log(req.session);
       res.render('product', {producto: result[0].dataValues, comentarios: result[1]} )
     })
 
@@ -38,6 +39,15 @@ const productController = {
   },
   productEdit: (req,res) =>{
 
+  },
+  comment: (req, res) =>{
+    Coments.create({
+      usuario_id: req.session.User.id,
+      producto_id: req.session.product,
+      contenido: req.body.comentario
+    }).then((result) =>{
+      res.redirect('/product/id/' + req.session.product)
+    })
   }
 };
 module.exports = productController;

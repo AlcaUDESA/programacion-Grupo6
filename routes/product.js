@@ -19,5 +19,6 @@ router.post('/add', upload.single('imgProduct'), productController.productAdd);
 
 router.get('/id/:id', productController.show);
 
+router.post('/comment', productController.comment)
 
 module.exports = router;

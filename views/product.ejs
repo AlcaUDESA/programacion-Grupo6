@@ -16,7 +16,7 @@
 		<div class="d-flex align-items-center titulo-producto">
 			<h2 id="products-title"> <%= producto.nombre %>	</h2> 
 			<p class="product-detail-description">
-				<a href="/product/add">Editar</a>
+				creado por: <%= producto.User.dataValues.nombre%>
 			</p>
 		</div>
 		<div class="product-detail">
@@ -30,7 +30,7 @@
 					<section class="comments">
 						<% for (let i = 0; i < comentarios.length; i++)  {%>
 							<article>
-							<img src="https://images.assetsdelivery.com/compings_v2/thesomeday123/thesomeday1231709/thesomeday123170900021.jpg" alt="">
+							<img src="/images/users/<%= comentarios[i].User.picture %>" alt="">
 							<div class="data">
 								<p class="user">
 								<strong> <a href="/user/profile/<%= comentarios[i].dataValues.User.id %> %>"><%= comentarios[i].dataValues.User.nombre %></a> </strong>
@@ -39,8 +39,8 @@
 						</article>
 						<%}%>	
 					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+					<form class="form" action="/product/comment" method="POST">
+						<input class="form-input" type="text" name="comentario" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
