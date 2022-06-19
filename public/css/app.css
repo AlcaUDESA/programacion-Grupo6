@@ -127,7 +127,10 @@ hr {
 
 
 
+.logo{
 
+  border-radius: 50%;
+}
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
