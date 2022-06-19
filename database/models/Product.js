@@ -44,6 +44,6 @@ module.exports = (sequelize, dataTypes) =>{
       foreignKey: 'usuario_id'
     })
   }
-
+//falta el de comentarios!!
   return Product
 }

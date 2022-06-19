@@ -25,7 +25,6 @@ const userController = {
         }
         console.log(infoUser)
         return res.render('profile',infoUser )
-       
     })
         
 
@@ -91,8 +90,6 @@ const userController = {
 
         //capturamos la información del formulario para procesarla, para ello lo guardamos en una variable//
         let info = req.body;
-        //Creamos una variable guardando la foto de perfil que el usuario quiere subir al storage//
-
         //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
         let errors = {};
 
@@ -113,12 +110,9 @@ const userController = {
             errors.message = "Debes escribir un email para registrarte";
             res.locals.errors = errors; 
             return res.render('register'); 
-        }else if(info.emailUsuario == User.email){
-            errors.message = "Debes escribir un email para registrarte";
-            res.locals.errors = errors; 
-            return res.render('register');
         }
         else{
+
         //creamos un objeto literal con la informacion especifica del nuevo usuario//
             let picture = req.file.filename
             let usuarioNuevo = {
@@ -132,15 +126,32 @@ const userController = {
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString(),
             }
-        //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User"//
-            User.create(usuarioNuevo)
-            .then((result) => {
+        //Creamos el filtro de mail repetido//
+        let IsRepeated = {where : [ { email : req.body.emailUsuario}]};  
+        //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User" en caso de que no exista el mail registrado porque sino es que hay un usuario registrado//
+        User.findOne(filterIsRepeated)
+        .then((result) => {
+            //Si no existe el mail en la base de datos entonces damos de alta al usuario//
+            if (!result) {
+                //Utilizamos el método create para dar de alta al usuario//
+                User.create(usuarioNuevo)
+                .then((result) => {
                 //Redirigimos la informacion del usuario hacia la ruta de login//
                 res.redirect("/user/login")
-            }).catch((err) => {
-                console.log(err)
-            });
-        }
+                }).catch((err) => {
+                    console.log(err);
+                });
+            } else { 
+                //Si ya existe el mail en la base de datos entonces es un error//
+                errors.message = "El email ya se encuentra registrado";
+                res.locals.errors = errors;
+                return res.render('register');
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+        
+    }   
 
     },
 
