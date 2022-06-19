@@ -5,7 +5,7 @@ const User = db.User;
 const userController = {
     show: (req,res)=>{
         
-        let id = req.params.id;
+    let id = req.params.id;
 
     User.findByPk(id, {
       include: {
@@ -24,7 +24,7 @@ const userController = {
             
         }
         console.log(infoUser)
-        return res.render('profile',infoUser )
+        return res.render('profile', {infoUser: infoUser} )
     })
         
 
@@ -93,7 +93,7 @@ const userController = {
         //Creamos el objeto literal errors para guardar los errores de register en un objeto que podemos aprovechar en la vista//
         let errors = {};
 
-        //Hacemos la validacion del formulario de register con condicionales//
+        //Hacemos la validacion del formulario de register con condicionales para nombre de Usuario, Contraseña y eMail//
         if(info.nameUsuario == ""){
             errors.message = "El nombre esta vacío";
             res.locals.errors = errors;
@@ -114,8 +114,8 @@ const userController = {
         else{
 
         //creamos un objeto literal con la informacion especifica del nuevo usuario//
-            let picture = req.file.filename
-            let usuarioNuevo = {
+        let picture = req.file.filename
+        let usuarioNuevo = {
                 nombre: info.nameUsuario,
                 //Hasheamos la contrasenia porque es informacion sensible//
                 contra: bcrypt.hashSync(info.password,12),
@@ -129,7 +129,7 @@ const userController = {
         //Creamos el filtro de mail repetido//
         let IsRepeated = {where : [ { email : req.body.emailUsuario}]};  
         //Enviamos el objeto literal como nuevo registro a nuestro modelo de alias "User" en caso de que no exista el mail registrado porque sino es que hay un usuario registrado//
-        User.findOne(filterIsRepeated)
+        User.findOne(IsRepeated)
         .then((result) => {
             //Si no existe el mail en la base de datos entonces damos de alta al usuario//
             if (!result) {
@@ -143,7 +143,7 @@ const userController = {
                 });
             } else { 
                 //Si ya existe el mail en la base de datos entonces es un error//
-                errors.message = "El email ya se encuentra registrado";
+                errors.message = "El email ya se encuentra registrado.";
                 res.locals.errors = errors;
                 return res.render('register');
             }

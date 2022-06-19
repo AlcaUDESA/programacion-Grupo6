@@ -729,3 +729,20 @@ input#emailUsuario {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+.errorRegister{
+  border: solid var(--brown) 2px;
+  border-radius: 3px;
+  font-size: 20px;
+  background-color: white;
+  text-align: center;
+}
