@@ -52,7 +52,7 @@
 	
 				<ul class="right-navbar">
 					<li>
-						<% if (locals.User != undefined) { %>
+						<% if (locals.User.picture != "") { %>
 							<a href="/user/profile/<%=User.id%>" class="">
 							  <img src="/images/users/<%= User.picture%>" alt="Imagen de <%= User.nombre%>" id="logo" style="width: 50px; height: 50px;" class="logo">
 							</a>
