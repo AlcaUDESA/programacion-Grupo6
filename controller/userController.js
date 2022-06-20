@@ -14,17 +14,14 @@ const userController = {
       }})
       .then((result) =>{
         
-        let infoUser =  {
-            nombre: result.nombre,
+        
+        
+        return res.render('profile', {nombre: result.nombre,
             email: result.email,
             picture: result.picture,
             productos: result.Product,
             comenta: result.Coments,
-            idUrl: req.params.id,
-            
-        }
-        console.log(infoUser)
-        return res.render('profile', {infoUser: infoUser} )
+            idUrl: req.params.id,} )
     })
         
 
