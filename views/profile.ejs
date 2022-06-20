@@ -15,34 +15,22 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<% if ( picture != "") { %>
-					
-					  <img src="/images/users/<%= picture %>" alt="Imagen de <%=nombre%>" id="logo" style="width: 150px;height: 150px;" radius="50" class="logo" />
-				
-			   <% }else { %>
-					
-					  <img src="/images/logo.png" style="width: 100px;height: 100px;" alt="usuario vacio" id="logo" >
-					
-				<% } %> 
+					<img src="/images/users/<%= user.picture %>" alt="Imagen de <%=user.nombre%>" id="logo" style="width: 150px;height: 150px;" radius="50" class="logo" > 
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title user-name"><%= nombre%></h1>
-						<% if (locals.User.id == idUrl) { %>
-							<a href="/user/profile/edit/<%=User.id%>">
+					<h1 class="main-title user-name"><%= user.nombre%></h1>
+							<a href="/user/profile/edit/<%=id%>">
 							<i class="fas fa-cog"></i>
 						</a>
-						<% }else { %>
-						<a class="btn mt-3 ml-4 " href="/user/profile/seguir/<%=User.id%>">SEGUIR</a> 
-						<% } %> 
-						
+						<a class="btn mt-3 ml-4 " href="/user/profile/seguir/<%=id%>">SEGUIR</a> 
 					</h1>
 				</div>
 				<div>
 					<ul class="info-usuario-counter">
-						<li><%=email%></li>
-						<li><%= productos.length %>  productos subidos</li>
-						<li><%=comenta.length%> comentarios</li>
+						<li><%=user.email%></li>
+						<li><%= user.Product.length %> Productos subidos</li>
+						<li><%= user.Coments.length%> Comentarios</li>
 						<li>300 seguidores</li>
 					</ul>
 				</div>
@@ -59,16 +47,16 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for(let i = 0; i < productos.length; i++){ %>
+			<% for(let i = 0; i < user.Product.length; i++){ %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/id/<%= productos[i].id %>">
+						<a href="/product/id/<%= user.Product[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%= productos[i].image %>" alt=<%= productos[i].nombre %>>
+								<img src="<%= user.Product[i].image %>" alt=<%= user.Product[i].nombre %>>
 							</figure>
 							<article class="product-box_data">
-								<h2><%= productos[i].nombre %></h2>
-								<p><%= productos[i].description %> </p>
+								<h2><%= user.Product[i].nombre %></h2>
+								<p><%= user.Product[i].description %> </p>
 							</article>
 						</a>
 					</section>

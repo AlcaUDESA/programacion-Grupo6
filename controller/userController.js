@@ -5,7 +5,7 @@ const User = db.User;
 const userController = {
     show: (req,res)=>{
         
-    let id = req.params.id;
+let id = req.params.id;
 
     User.findByPk(id, {
       include: {
@@ -13,19 +13,12 @@ const userController = {
         nested: true
       }})
       .then((result) =>{
-        
-        
-        
         return res.render('profile', 
-            {nombre: result.nombre,
-            email: result.email,
-            picture: result.picture,
-            productos: result.Product,
-            comenta: result.Coments,
-            idUrl: req.params.id,} )
-            
-    },
-   )
+            {
+            user:result,
+            id: req.params.id
+        });
+    });
         
 
     },
