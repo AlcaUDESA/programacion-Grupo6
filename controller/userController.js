@@ -16,13 +16,16 @@ const userController = {
         
         
         
-        return res.render('profile', {nombre: result.nombre,
+        return res.render('profile', 
+            {nombre: result.nombre,
             email: result.email,
             picture: result.picture,
             productos: result.Product,
             comenta: result.Coments,
             idUrl: req.params.id,} )
-    })
+            
+    },
+   )
         
 
     },
