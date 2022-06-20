@@ -44,5 +44,6 @@ module.exports = (sequelize, dataTypes) =>{
       foreignKey: 'usuario_id'
     })
   }
+  //no falta un hasMany de de comentarios?//
   return Product
 }
