@@ -1,4 +1,3 @@
-const database = require('../db/database');
 const db = require('../database/models');
 
 const Product = db.Product
@@ -19,9 +18,9 @@ const productController = {
   showAdd: (req, res)=>{
     console.log(req.session.User.id)
     return res.render('product-add', {
-      usuario: database.usuario,
-      comentarios: database.comentarios,
-      productos: database.productos
+      usuario: db.usuario,
+      comentarios: db.comentarios,
+      productos: db.productos
   })
   },
   productAdd: (req, res) => {

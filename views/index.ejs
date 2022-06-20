@@ -29,11 +29,11 @@
 				<section class="product-box">
 					<a href="/product/id/<%=results[i].id%>">
 						<figure class="product-box_image">
-							<img src="/public/images/products/<%results[i].image%>" alt=<%= results[i].nombre %>>
+							<img class= "imagenProductox" src="../public/images/products/<%image%>"" alt=<%= results[i].nombre %>>
 						</figure>
 						<article class="product-box_data">
 							<h2>Cargado por 
-								<a href="/user/profile/<%= results[i].usuario_id%>"><%= data[i].User.nombre %> </a>
+								<a href="/user/profile/<%= results[i].usuario_id%>"><%= results[i].User.nombre %> </a>
 							</h2>
 							<p><%= results[i].description %></p>
 						</article>
