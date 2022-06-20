@@ -17,20 +17,18 @@
 			<div class="img-container offset-3 col-2">
 				<% if (locals.User != undefined) { %>
 					
-					  <img src="/images/users/<%= picture %>" alt="Imagen de <%= nombre %>" id="logo" style="width: 150px;height: 150px;" radius="50" class="logo" />
+					  <img src="/images/users/<%= picture %>" alt="Imagen de <%=nombre%>" id="logo" style="width: 150px;height: 150px;" radius="50" class="logo" />
 				
 			   <% }else { %>
 					
-					  <img src="/images/logo.png" style="width: 100px;height: 100px;" alt="usuario vacio" id="logo" />
+					  <img src="/images/logo.png" style="width: 100px;height: 100px;" alt="usuario vacio" id="logo" >
 					
 				<% } %> 
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title user-name"><%= nombre%></h1>
-					
 						<% if (locals.User.id == idUrl) { %>
-
 							<a href="/user/profile/edit/<%=User.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
