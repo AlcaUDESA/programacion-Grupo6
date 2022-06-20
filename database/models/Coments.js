@@ -1,7 +1,6 @@
 module.exports = (sequelize, dataTypes) =>{
     let alias = 'Coments'
     let cols = {
-
       id: {
         type: dataTypes.INTEGER,
         primaryKey: true,
