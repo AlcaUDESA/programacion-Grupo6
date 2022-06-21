@@ -50,7 +50,7 @@ let id = req.params.id;
                             if (contraEncrip) {
 
                             req.session.User = result.dataValues;
-
+                            req.session.user_id = result.dataValues.id
                             if (req.body.remember != undefined) {
                                 res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
                             }

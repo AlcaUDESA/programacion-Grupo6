@@ -748,6 +748,12 @@ input#emailUsuario {
 }
 
 
+.button-edit-product{
+  color: #03264C;
+  text-decoration: wavy;
+}
+
+
 .tituloProductox{
   font-size: 19px;
   text-align: center;

@@ -10,8 +10,9 @@ const productController = {
     Promise.all([productSelected, commentSelected])
     .then((result) =>{
       req.session.product = req.params.id
+      console.log(typeof req.session.user_id); 
       console.log(req.session);
-      res.render('product', {producto: result[0].dataValues, comentarios: result[1]} )
+      res.render('product', {producto: result[0].dataValues, comentarios: result[1], usuario: req.session.user_id} )
     })
 
   },
@@ -40,13 +41,19 @@ const productController = {
 
   },
   comment: (req, res) =>{
-    Coments.create({
-      usuario_id: req.session.User.id,
-      producto_id: req.session.product,
-      contenido: req.body.comentario
-    }).then((result) =>{
-      res.redirect('/product/id/' + req.session.product)
-    })
+      Coments.create({
+        usuario_id: req.session.User.id,
+        producto_id: req.session.product,
+        contenido: req.body.comentario
+      }).then((result) =>{
+        res.redirect('/product/id/' + req.session.product)
+      })
+  },
+  productDelete: (req, res) =>{
+    res.send('hola')
+  },
+  showEdit: (req, res)=>{
+    res.render('product-edit')
   }
 };
 module.exports = productController;

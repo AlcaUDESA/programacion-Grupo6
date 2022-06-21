@@ -23,7 +23,8 @@ module.exports = (sequelize, dataTypes) =>{
     };
     let config = {
       tableName: 'follower', 
-      timestamps: false,
+      underscored: true,
+      timestamps: true,
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     };
