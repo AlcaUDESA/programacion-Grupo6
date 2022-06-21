@@ -741,5 +741,12 @@ input#emailUsuario {
   text-align: center;
 }
 
-
+.mensajeDeErrorResultados{
+  text-align: center;
+  background-color: white;
+  border-radius: 25px;
+  font-size: 50px;
+  font-family: var(--base4-font-family);
+  color: red;
+}
 

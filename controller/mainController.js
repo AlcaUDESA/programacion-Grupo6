@@ -20,48 +20,49 @@ const mainController = {
       res.render('index' , {
         results: results,
       })}
-    )},
+)},
   searchResults: (req,res) =>{
+let busqueda = req.query.search;
+let arrayProductos = [];
+let errors ={};
 
-    let querySearch = req.query.search
-
-    let errors = {}
-
-    products.findAll(
-      {
-        include: [{
-          association: 'User'
-      }, {
-          association: 'Coments'
-      }],
-      where: {
-          [op.or]: [{
-                nombre: {
-                [op.like]: `%${querySearch}%`
-                }
-            },
-            {
-                descripcion: {
-                  [op.like]: `%${querySearch}%`
-                }
-            }
-          ]
-      }
-      }).then((resultadosDeBusqueda)=>{
-          if(!resultadosDeBusqueda){
-            errors.message = "No hay resultados para su criterio de búsqueda";
-            res.locals.errors = errors; 
-            return res.render('/search-results'); 
-
-          }else{
-            return res.render('/search-results', {
-              results: resultadosDeBusqueda,
-            })
+products.findAll({
+  include: [{
+    association: 'User'
+ }, {
+    association: 'Coments'
+ }],
+ where: {
+    [op.or]: [{
+          nombre: {
+             [op.like]: `%${busqueda}%`
           }
-      }).catch((errors) =>{
-        console.log(errors)
-      })
-  },
+       },
+       {
+          description: {
+             [op.like]: `%${busqueda}%`
+          }
+       }
+    ]
+ }
+}).then(function (productosCoincidentes) {
+  for(i=0; i< productosCoincidentes.length; i++ ){
+    arrayProductos.push(productosCoincidentes[i])
+  }
+  if(arrayProductos.length == 0){
+    errors.message = "“No hay resultados para su criterio de búsqueda”";
+    res.locals.errors = errors; 
+    return res.render('search-results', {
+      productos: arrayProductos,
+    })
+  }else{
+return res.render('search-results', {
+  productos: arrayProductos,
+})
+  }
+})
+  }
 }
 
 module.exports = mainController;
+  
