@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const db = require("../database/models");
 const User = db.User;
-
 const userController = {
     show: (req,res)=>{
         
@@ -179,16 +178,32 @@ let id = req.params.id;
     },
 
     follow: (req, res) => { 
-
+        
        
-        User.create({
-
-            follower_id: locals.User.id,
-            following_id: req.params.id,
-        }
+        db.Follower.findOne({
             
-
-        )
+            where : [{
+                follower_id: req.session.User.id,
+                following_id: req.params.id,
+            }]
+         })
+         .then ((result) => {
+            if (result) {
+                
+                return res.redirect(`/user/profile/${req.params.id}`);
+            }
+            else {
+                db.Follower.create({
+                    follower_id: req.session.User.id,
+                    following_id: req.params.id,
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString(),
+                })
+                return res.redirect(`/user/profile/${req.params.id}`);
+            }
+         }
+         
+         )
     },
 
     logout : (req, res) => {
