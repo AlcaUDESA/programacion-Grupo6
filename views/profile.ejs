@@ -20,9 +20,12 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title user-name"><%= user.nombre%></h1>
-							<a href="/user/profile/edit/<%=id%>">
+					<% if (locals.User != undefined ) { %>
+						<%if (locals.user.id = id) { %><a href="/user/profile/edit/<%=id%>">
 							<i class="fas fa-cog"></i>
-						</a>
+						</a>				
+					<% } %> 
+					<% } %> 
 						<a class="btn mt-3 ml-4 " href="/user/profile/seguir/<%=id%>">SEGUIR</a> 
 					</h1>
 				</div>
