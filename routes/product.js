@@ -18,7 +18,12 @@ router.get('/add', productController.showAdd);
 router.post('/add', upload.single('imgProduct'), productController.productAdd);
 
 router.get('/id/:id', productController.show);
+router.post('/id/:id', productController.productDelete)
 
 router.post('/comment', productController.comment)
+
+router.get('/edit/:id', productController.showEdit)
+router.post('/edit/:id', productController.productEdit)
+
 
 module.exports = router;

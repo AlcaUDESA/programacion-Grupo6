@@ -747,3 +747,8 @@ input#emailUsuario {
   color: red;
 }
 
+.button-edit-product{
+  color: #03264C;
+  text-decoration: wavy;
+}
+
