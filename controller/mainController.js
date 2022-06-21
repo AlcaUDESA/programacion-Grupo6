@@ -50,7 +50,7 @@ products.findAll({
     arrayProductos.push(productosCoincidentes[i])
   }
   if(arrayProductos.length == 0){
-    errors.message = "“No hay resultados para su criterio de búsqueda”";
+    errors.message = "No hay resultados para su criterio de búsqueda";
     res.locals.errors = errors; 
     return res.render('search-results', {
       productos: arrayProductos,
