@@ -23,8 +23,7 @@ const mainController = {
 )},
   searchResults: (req,res) =>{
 let busqueda = req.query.search;
-let arrayProductos = [];
-let errors ={};
+let errorsBuscador ={};
 
 products.findAll({
   include: [{
@@ -46,18 +45,17 @@ products.findAll({
     ]
  }
 }).then(function (productosCoincidentes) {
-  for(i=0; i< productosCoincidentes.length; i++ ){
-    arrayProductos.push(productosCoincidentes[i])
-  }
-  if(arrayProductos.length == 0){
-    errors.message = "No hay resultados para su criterio de búsqueda";
-    res.locals.errors = errors; 
-    return res.render('search-results', {
-      productos: arrayProductos,
+ 
+  if(productosCoincidentes.length == 0 || busqueda == ""){
+    errorsBuscador.message = "No hay resultados para su criterio de búsqueda";
+    res.locals.errorsBuscador = errorsBuscador; 
+    return res.render('search-results', 
+    {
+      productos: productosCoincidentes,
     })
   }else{
 return res.render('search-results', {
-  productos: arrayProductos,
+  productos: productosCoincidentes,
 })
   }
 })
