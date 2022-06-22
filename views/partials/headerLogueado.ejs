@@ -48,6 +48,7 @@
 				<ul class="left-navbar">
 					<li><a href="/">Todos los productos</a></li>
 					<li><a href="/product/add">Cargar productos</a></li>
+					<li><a href="/user/profile/<%=User.id%> "><i class="fas fa-user"></i> Mi perfil</a></li>
 				</ul>
 	
 				<ul class="right-navbar">
@@ -62,8 +63,8 @@
 							</a>
 						<% } %> 
 					</li>
-					<li><a href="/user/profile/<%=User.id%> ">
-						<%=User.nombre%> <i class="fas fa-user"></i>
+					<li><a href="/user/profile/<%=User.id%> "> Bienvenido
+						<%=User.nombre%>!
 						</a>
 					</li>
 					<li>
