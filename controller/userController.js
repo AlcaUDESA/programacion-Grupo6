@@ -4,20 +4,26 @@ const User = db.User;
 const userController = {
     show: (req,res)=>{
         
-let id = req.params.id;
+        let id = req.params.id;
 
-    User.findByPk(id, {
-      include: {
-        all: true,
-        nested: true
-      }})
-      .then((result) =>{
-        return res.render('profile', 
-            {
-            user:result,
-            id: req.params.id
-        });
-    });
+        let promesaUser=  User.findByPk(id, {
+           include: {
+             all: true,
+             nested: true
+           }});
+         let promesafolow =  db.Follower.findAll({where: [ {following_id: id}]});
+     
+     Promise.all([promesaUser,promesafolow])
+           
+           .then(([promesaUser,promesafolow]) =>{
+               
+             return res.render('profile', 
+                 {
+                 user:promesaUser,
+                 follow: promesafolow,
+                 id: req.params.id
+             });
+         });
         
 
     },
