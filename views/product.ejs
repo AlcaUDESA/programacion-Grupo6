@@ -20,9 +20,9 @@
 				<% if(producto.User.dataValues.id == usuario){ %>
 					<br>
 					<form action="/product/id/<%= producto.id %>" method="post">
-						<button type="submit" class="button-edit-product">ELIMINAR</button>
+						<button type="submit" class="buy-now-button">ELIMINAR</button>
 					</form>
-					<button><a href="/product/edit/ <%= producto.id %>" class="button-edit-product">EDITAR</a></button>
+					<a href="/product/edit/ <%= producto.id %>" class="buy-now-button">EDITAR</a>
 			<% } %>
 			</p>
 		</div>
@@ -46,10 +46,14 @@
 						</article>
 						<%}%>	
 					</section>
+					<% if(!locals.User){ %>
+						<h2><a href="/user/login">Logueaté para participar</a><h2>
+					<%}else{%>
 					<form class="form" action="/product/comment" method="POST">
 						<input class="form-input" type="text" name="comentario" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+					<%}%>
 					<hr>
 				</div>
 			</div>

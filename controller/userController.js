@@ -57,6 +57,7 @@ const userController = {
 
                             req.session.User = result.dataValues;
                             req.session.user_id = result.dataValues.id
+                            res.locals.user = req.session.user
                             if (req.body.remember != undefined) {
                                 res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
                             }
@@ -215,7 +216,7 @@ const userController = {
     logout : (req, res) => {
         req.session.destroy();
         res.clearCookie('id');
-        return res.render("login")
+        return res.redirect("/")
     },
 }
 

@@ -6,7 +6,7 @@ const Coments = db.Coments
 const productController = {
   show: (req,res)=>{
     let productSelected = Product.findByPk(req.params.id, {include: [{association: 'User'}]})
-    let commentSelected = Coments.findAll({where:{producto_id: req.params.id}, include:[{association: 'User'}]})
+    let commentSelected = Coments.findAll({where:{producto_id: req.params.id}, include:[{association: 'User'}], order: [['created_at','DESC']]})
     Promise.all([productSelected, commentSelected])
     .then((result) =>{
       req.session.product = req.params.id
