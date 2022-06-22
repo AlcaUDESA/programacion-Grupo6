@@ -56,7 +56,7 @@ const userController = {
                             if (contraEncrip) {
 
                             req.session.User = result.dataValues;
-                            req.session.user_id = result.dataValues.id
+                            
                             res.locals.user = req.session.user
                             if (req.body.remember != undefined) {
                                 res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
@@ -184,7 +184,7 @@ const userController = {
             res.locals.errors = errors
             return res.render('profile-edit')
 
-        } else if(info.imagenUsuario == ''){
+        } else if(info.imagenUsuario = ''){
             errors.message = 'La foto de perfil esta vacía'
             res.locals.errors = errors
             return res.render('profile-edit')}
@@ -192,10 +192,11 @@ const userController = {
         
         let dataNew = {
             picture: picture,
-            nombre: req.body.nameUsuario,
-            email: req.body.emailUsuario,
+            nombre: info.nameUsuario,
+            dni: info.dni,
+            email: info.emailUsuario,
             contra: bcrypt.hashSync(req.body.Password,10),
-            birthdate: req.body.dateUpload,
+            birthdate: info.dateUpload,
           }
         
         User.update(dataNew,{
