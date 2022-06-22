@@ -234,6 +234,7 @@ box-shadow: rgba(78, 46, 15, 0.4) 0px 5px, rgba(100, 59, 18, 0.3) 0px 10px, rgba
   
 }
 
+
 .product-box a {
   display: block;
 
@@ -241,7 +242,7 @@ box-shadow: rgba(78, 46, 15, 0.4) 0px 5px, rgba(100, 59, 18, 0.3) 0px 10px, rgba
   
 }
 .product-box_image img {
-  height: 215px;
+  height: 300px;
   width: 100%;
 }
 
