@@ -28,7 +28,7 @@ router.get('/register', userController.register)
 router.post('/register',upload.single('imagenUsuario'), userController.procesarRegister)
 
 router.get('/profile/edit/:id', userController.edit)
-router.post('/profile/edit/:id', userController.procesarEdit)
+router.post('/profile/edit/:id',upload.single('imagenUsuario'), userController.procesarEdit)
 
 router.post("/logout", userController.logout)
 

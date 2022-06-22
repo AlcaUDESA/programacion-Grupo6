@@ -21,7 +21,13 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="formulariosRegister">
-				<form class="registerForm" action="/user/profile/edit/<%= User.id  %> " method="post">
+				 
+				<form class="registerForm" action="/user/profile/edit/<%= User.id  %> " method="post" enctype="multipart/form-data">
+					<div><% if (locals.errors) { %>
+						<p style="color: rgb(69, 25, 25);"><%= locals.errors.message %> </p>
+					<% } %>
+				</div>
+					
 					<div class="campos">
 						<label for="imgPerfil">Foto de perfil:</label>
 						<input type="file" name="imagenUsuario" id="imgPerfil">
@@ -29,6 +35,10 @@
 					<div class="campos">
 						<label for="emailUsuario">Correo electrónico:</label>
 						<input type="email" name="emailUsuario" id="emailUsuario">
+					</div>
+					<div class="campos">
+						<label for="dni">Documento Nacional de Identificación:</label>
+						<input type="number" name="dni" id="dni">
 					</div>
 					<div class="campos">
 						<label for="nameUsuario">Nombre de usuario:</label>
@@ -42,7 +52,9 @@
 						<label for="dateUpload">Fecha de nacimiento:</label>
 						<input type="date" name="dateUpload" id="dateUpload">
 					</div>
+					
 					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
+					
 				</form>
 			</div>
 		</div>

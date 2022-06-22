@@ -159,17 +159,45 @@ const userController = {
         })
     },
     procesarEdit: (req,res) => {
+        let picture = req.file.filename;
+        let info = req.body;  
+        let errors = {}
 
-        User.update({
-            picture: req.body.imagenUsuario,
+        if (info.nameUsuario == '') {
+            errors.message = 'El nombre esta vacío'
+            res.locals.errors = errors
+            return res.render('profile-edit')
+        
+        } else if (info.emailUsuario == ''){
+            errors.message = 'El email esta vacío'
+            res.locals.errors = errors
+            return res.render('profile-edit')
+
+        } else if (info.dni == ''){
+            errors.message = 'El  documento esta vacío'
+            res.locals.errors = errors
+            return res.render('profile-edit')
+        
+        } else if (info.dateUpload === ''){
+            errors.message = 'La fecha esta vacía'
+            res.locals.errors = errors
+            return res.render('profile-edit')
+
+        } else if(info.imagenUsuario == ''){
+            errors.message = 'La foto de perfil esta vacía'
+            res.locals.errors = errors
+            return res.render('profile-edit')}
+        else{
+        
+        let dataNew = {
+            picture: picture,
             nombre: req.body.nameUsuario,
             email: req.body.emailUsuario,
             contra: bcrypt.hashSync(req.body.Password,10),
             birthdate: req.body.dateUpload,
-            
-            
-            
-          },{
+          }
+        
+        User.update(dataNew,{
             where: {
                 id: req.params.id
             }
@@ -177,10 +205,10 @@ const userController = {
           })
           .then((result) => {
             return res.redirect("/user/login");
-          }).catch((err) => {
-            return res.send(err)
+          
           });
-         
+        }
+     
     },
 
     follow: (req, res) => { 
