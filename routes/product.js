@@ -23,7 +23,7 @@ router.post('/id/:id', productController.productDelete)
 router.post('/comment', productController.comment)
 
 router.get('/edit/:id', productController.showEdit)
-router.post('/edit/:id', productController.productEdit)
+router.post('/edit/:id', upload.single('imgProduct'), productController.productEdit)
 
 
 module.exports = router;

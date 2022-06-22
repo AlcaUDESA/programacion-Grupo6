@@ -6,7 +6,7 @@ const Coments = db.Coments
 const productController = {
   show: (req,res)=>{
     let productSelected = Product.findByPk(req.params.id, {include: [{association: 'User'}]})
-    let commentSelected = Coments.findAll({where:{producto_id: req.params.id}, include:[{association: 'User'}]})
+    let commentSelected = Coments.findAll({where:{producto_id: req.params.id}, include:[{association: 'User'}], order: [['created_at','DESC']]})
     Promise.all([productSelected, commentSelected])
     .then((result) =>{
       req.session.product = req.params.id
@@ -50,10 +50,28 @@ const productController = {
       })
   },
   productDelete: (req, res) =>{
-    res.send('hola')
+   Product.destroy({where:{ id: req.params.id,}})
+   .then(result =>{
+    res.redirect('/')
+   })
   },
   showEdit: (req, res)=>{
-    res.render('product-edit')
+    Product.findByPk(req.params.id)
+    .then((result)=>{
+      console.log(req.session);
+      res.render('product-edit', {product: result, id: req.params.id})
+    })
+  },
+  productEdit: (req, res) =>{
+    Product.update({
+      nombre: req.body.nombre,
+      image: req.file.filename,
+      description: req.body.description,
+      usuario_id: req.session.User.id,
+      updated_at: new Date(),
+    }, {where: {id: req.params.id}}).then((result)=>{
+      res.redirect('/user/profile/'+ req.session.User.id)
+    })
   }
 };
 module.exports = productController;
