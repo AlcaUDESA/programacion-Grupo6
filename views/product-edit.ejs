@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head') %>
+
+<body>
+	<!-- Header -->
+	<% if (locals.User != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs')  %> 
+	<% }else {%>
+		<%- include('./partials/header.ejs')  %> 
+	<% } %> 
+	<!-- /Header -->
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Agregar productos</h2>
+			</div>
+			<!-- Show the "ultimo !-->
+			<div class="formulariosRegister">
+				<form action="/product/edit/<%= id %>" method="POST" enctype="multipart/form-data">
+					<div class="campos">
+						<label for="imgProduct">Imagen de Producto:</label>
+						<input type="file" name="imgProduct" id="imgProduct">
+					</div>
+					<div class="campos">
+						<label for="nameProduct">Nombre de Producto:</label>
+						<input type="text" name="nameProduct" id="nameProduct">
+					</div>
+					<div class="campos">
+						<label for="description">Descripción:</label>
+						<textarea name="description" id="description" cols="30" rows="10"></textarea>		
+					</div>
+					<div class="campos">
+						<label for="dateUpload">fecha de publicacion</label>
+						<input type="date" name="dateUpload" id="dateUpload">
+					</div>
+					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<%- include('./partials/footer') %>
+	<!-- /footer -->
+</body>
+
+</html>

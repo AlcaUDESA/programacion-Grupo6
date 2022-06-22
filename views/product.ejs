@@ -19,7 +19,7 @@
 				creado por: <a href="/user/profile/<%= producto.User.dataValues.id %>"><%= producto.User.dataValues.nombre%></a>
 				<% if(producto.User.dataValues.id == usuario){ %>
 					<br>
-					<form action="/id/:id" method="post">
+					<form action="/product/id/<%= producto.id %>" method="post">
 						<button type="submit" class="button-edit-product">ELIMINAR</button>
 					</form>
 					<button><a href="/product/edit/ <%= producto.id %>" class="button-edit-product">EDITAR</a></button>
@@ -41,7 +41,7 @@
 							<div class="data">
 								<p class="user">
 								<strong> <a href="/user/profile/<%= comentarios[i].dataValues.User.id %> %>"><%= comentarios[i].dataValues.User.nombre %></a> </strong>
-								<p><%= comentarios[i].dataValues.contenido %></p>
+								<%= comentarios[i].dataValues.contenido %></p>
 							</div>
 						</article>
 						<%}%>	
