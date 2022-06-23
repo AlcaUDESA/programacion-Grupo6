@@ -20,8 +20,8 @@ follower_id int unsigned not null,
 following_id int unsigned not null, 
 created_at DATETIME,
 updated_at DATETIME,
-foreign key (follower_id) references usuario(id),
-foreign key (following_id) references usuario(id)
+foreign key (follower_id) references usuario(id) on delete cascade ,
+foreign key (following_id) references usuario(id) on delete cascade
 );
 
 create table producto(
@@ -33,7 +33,7 @@ created_at DATETIME,
 updated_at DATETIME,
 upload_at DATETIME,
 usuario_id int unsigned not null,
-foreign key (usuario_id) references usuario(id)
+foreign key (usuario_id) references usuario(id) on delete cascade
 );
 
 create table comentario(
@@ -43,6 +43,6 @@ producto_id int unsigned not null,
 contenido text,
 created_at DATETIME,
 updated_at DATETIME,
-foreign key (usuario_id) references usuario(id),
-foreign key (producto_id) references producto(id)
+foreign key (usuario_id) references usuario(id) on delete cascade,
+foreign key (producto_id) references producto(id) on delete cascade
 );

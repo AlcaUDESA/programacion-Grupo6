@@ -26,15 +26,11 @@
 					</div>
 					<div class="campos">
 						<label for="nameProduct">Nombre de Producto:</label>
-						<input type="text" name="nameProduct" id="nameProduct">
+						<input type="text" name="nameProduct" id="nameProduct" value="<%= product.nombre%>">
 					</div>
 					<div class="campos">
 						<label for="description">Descripción:</label>
-						<textarea name="description" id="description" cols="30" rows="10"></textarea>		
-					</div>
-					<div class="campos">
-						<label for="dateUpload">fecha de publicacion</label>
-						<input type="date" name="dateUpload" id="dateUpload">
+						<textarea name="description" id="description" cols="30" rows="10"><%= product.description%></textarea>		
 					</div>
 					<button type="submit" class="buy-now-button">ENVIAR FORMULARIO</button>
 				</form>
