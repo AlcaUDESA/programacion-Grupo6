@@ -1,3 +1,5 @@
+use grupo6prog2; 
+
 INSERT INTO usuario (nombre, dni, contra, email, birthdate, picture)
 VALUES('AgusTaylor54', 44656032, '$2a$12$ABItFK.41MVvwCsdg6sM.OUiGKGv3GKLVN9A6L4u5jE/k8KgEUtZK','agustintaylor@gmail.com', '2002-09-25','fotoDePerfil123.jpg');
 
