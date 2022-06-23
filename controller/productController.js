@@ -50,10 +50,16 @@ const productController = {
       })
   },
   productDelete: (req, res) =>{
-   Product.destroy({where:{ id: req.params.id,}})
-   .then(result =>{
-    res.redirect('/')
-   })
+    Product.findByPk(req.params.id).then((result)=>{
+      if(req.session.User.id == result.usuario_id ){
+        Product.destroy({where:{ id: req.params.id,}})
+        .then(result =>{
+         res.redirect('/')
+        })
+      }else{
+        res.redirect('/')
+      }
+    })
   },
   showEdit: (req, res)=>{
     Product.findByPk(req.params.id)
@@ -63,14 +69,20 @@ const productController = {
     })
   },
   productEdit: (req, res) =>{
-    Product.update({
-      nombre: req.body.nombre,
-      image: req.file.filename,
-      description: req.body.description,
-      usuario_id: req.session.User.id,
-      updated_at: new Date(),
-    }, {where: {id: req.params.id}}).then((result)=>{
-      res.redirect('/user/profile/'+ req.session.User.id)
+    Product.findByPk(req.params.id).then((result)=>{
+      if(req.session.User.id == result.usuario_id){
+        Product.update({
+          nombre: req.body.nombre,
+          image: req.file.filename,
+          description: req.body.description,
+          usuario_id: req.session.User.id,
+          updated_at: new Date(),
+        }, {where: {id: req.params.id}}).then((result)=>{
+          res.redirect('/user/profile/'+ req.session.User.id)
+        })
+      }else{
+        res.redirect('/')
+      }
     })
   }
 };
