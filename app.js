@@ -36,7 +36,7 @@ app.set('view engine', 'ejs');
    });
 
    app.use(function(req, res, next) {
-    if (req.cookies.id != undefined && req.session.user == undefined) {
+    if (req.cookies.id != undefined && req.session.User == undefined) {
         let idUser = req.cookies.id;
   
         User.findByPk(idUser)

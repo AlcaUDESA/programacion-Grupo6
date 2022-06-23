@@ -57,7 +57,7 @@ const userController = {
 
                             req.session.User = result.dataValues;
                             
-                            res.locals.user = req.session.user
+                            
                             if (req.body.remember != undefined) {
                                 res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
                             }
