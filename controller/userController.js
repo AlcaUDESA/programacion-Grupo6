@@ -5,7 +5,7 @@ const userController = {
     show: (req,res)=>{
         
         let id = req.params.id;
-
+        
         let promesaUser=  User.findByPk(id, {
            include: {
              all: true,
@@ -56,7 +56,7 @@ const userController = {
                             if (contraEncrip) {
 
                             req.session.User = result.dataValues;
-                            
+                            req.session.user_id = result.dataValues.id;
                             
                             if (req.body.remember != undefined) {
                                 res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
